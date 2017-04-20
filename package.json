@@ -1,0 +1,32 @@
+{
+  "name": "angular-trello",
+  "version": "0.0.1",
+  "description": "prototype",
+  "scripts": {
+    "start": "gulp"
+  },
+  "keywords": [],
+  "author": "Michael Polak",
+  "license": "",
+  "devDependencies": {
+    "angular-mocks": "^1.6.3",
+    "browser-sync": "^2.18.8",
+    "del": "^1.2.0",
+    "gulp": "^3.8.11",
+    "gulp-angular-templatecache": "^2.0.0",
+    "gulp-concat": "^2.5.2",
+    "gulp-csso": "^1.0.0",
+    "gulp-filter": "^2.0.2",
+    "gulp-htmlmin": "^3.0.0",
+    "gulp-inject": "^4.2.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.0.1",
+    "gulp-sourcemaps": "^2.4.1",
+    "gulp-typescript": "^3.1.6",
+    "gulp-uglify": "^2.1.2",
+    "gulp-util": "^3.0.8",
+    "main-bower-files": "^2.13.1",
+    "typescript": "^2.2.2",
+    "wiredep": "^4.0.0"
+  }
+}
