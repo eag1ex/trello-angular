@@ -7,7 +7,6 @@ module app {
     .config(configureStates)
     .run(appRun);
 
-
   appRun['$inject'] = ['httpbackedMockService'];
   function appRun(httpbackedMockService) {
     console.log();

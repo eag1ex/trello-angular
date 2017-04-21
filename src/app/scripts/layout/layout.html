@@ -1,12 +1,26 @@
-<nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
-      <button class="navbar-toggler navbar-toggler-right hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <a class="navbar-brand" href="#">Design</a>
-
-      <a class="float-right" href="#">Show Menu</a>
-    </nav>
+<nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand" href="#">Design</a>
+  <div class="collapse navbar-collapse" id="navbarText" >
+    <ul class="navbar-nav mr-auto" style='opacity:0'>
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Features</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Pricing</a>
+      </li>
+    </ul>
+    <span class="navbar-text float-right">
+      Menu
+    </span>
+  </div>
+</nav>
 
 <div class="container-fluid mt-4 " ng-controller="layoutController as vm">
-        <div ui-view class="col-sm-12 col-md-12 col-lg-12 mt-5"></div>
+  <div ui-view class="col-sm-12 col-md-12 col-lg-12 mt-5"></div>
 </div>

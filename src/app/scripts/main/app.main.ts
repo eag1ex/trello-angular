@@ -1,21 +1,24 @@
 module app.main {
   'use strict';
-
-
   export class MainController {
-    public clientOrders: any;
-    public remarks: any;
-    public clientDetails: any;
-    public lists = []
-    static $inject: Array<string> = ['$q', 'dataservice', '$state', '$scope'];
+    public dataForModal: any;
+    public lists = [];
+    public dblclick: any;
+    static $inject: Array<string> = ['$scope', '$element', '$document', '$uibModal', '$timeout'];
     /* @ngInject */
-    constructor(private $q,
-      private dataservice: any,
-      private state: any,
-      public scope: any
+    constructor(
+      public scope: any,
+      public element: any,
+      public document: any,
+      public modal: any,
+      public timeout: any
     ) {
 
-      //this.get();
+      element.dblclick((e) => {
+        if (e.target.nodeName == 'INPUT') return false;
+        this.openModal(false, false);
+        this.dblclick = true;
+      })
 
       this.lists = [
         {
@@ -33,54 +36,69 @@ module app.main {
           ]
         }
       ]
-
     }
 
-    get() {
-      /* 
-       this.dataservice.get().then((data) => {
-         this.clientDetails = data.orders[0].client[0];
-         // purchases
-         var oldData = data.orders[0].purchase[0];
-         var newData = [];
-         var i = 0;
-         while (i < 6) {
-           newData.push(oldData);
-           i++;
-         }
-         this.clientOrders = newData;
- 
-         // remarks
-         this.remarks = data.orders[0].remarks[0];
-       });
-       */
+    openModal(elmData, _inx) {
+
+      if (!elmData && !_inx) {
+        console.log('new item')
+        this.dataForModal = {
+          inx: null
+        }
+      }
+      else {
+        console.log('update item')
+        this.dataForModal = {
+          lists: [elmData],
+          inx: _inx
+        }
+      }
+
+      this.modal.open({
+        animation: true,
+        template: `<ticket-modal ng-init="vm.modalData"
+                    modal-data="vm.modalData" $close="$close(result)" 
+                    $dismiss="$dismiss(reason)"></ticket-modal>`,
+
+        controller: ['modalData', function (modalData) {
+          this.modalData = modalData;
+        }],
+        controllerAs: 'vm',
+        resolve: {
+          modalData: () => {
+            return this.dataForModal;
+          }
+        }
+      }).result.then((result) => {
+        //update
+        if (_inx >= 0) this.lists[_inx] = result;
+        //add new
+        if (_inx == null) this.lists = this.lists.concat(result);
+
+        if (this.dblclick) {
+          this.lists = this.lists.concat(result);
+          this.dblclick = false;
+        }
+
+      }, function (reason) {
+        console.log('modal failed!', reason)
+      });
 
     }
-    addTick(list) {
-      list.tickets.push({})
-    }
-    addList(_t) {
-      console.log(angular.element(_t));
-      this.lists.push({ name: 'new list', tickets: [] })
-    }
- 
   }
 
   class MainComponent {
 
     constructor() { }
     restrict = 'E';
-    // transclude: true;
     controllerAs = "vm";
     templateUrl = 'dist/js/app.main.html';
     controller = MainController;
   }
 
-
   angular
     .module('app.main', [])
   angular
     .module('app.main').component('main', new MainComponent());
-
 
 }

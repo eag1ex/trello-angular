@@ -7,6 +7,7 @@ module app {
   angular.module('app', [
     // dependant
     'ui.router',
+    'ui.bootstrap',
     'ngAnimate',
     'ngMockE2E',
     'dndLists',
@@ -14,7 +15,8 @@ module app {
     'app.data',
     'app.core',
     'app.layout',
-    'app.main'
+    'app.main',
+    'app.main.modal'
   ]);
 
 }

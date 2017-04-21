@@ -1,7 +1,7 @@
-#### - Nimble3 Dashboard -
+#### - Trello Angular -
 
 ######Repo
-git@bitbucket.org:man777/nimbl3.test.git
+
 
 ###### Instalation
 
@@ -18,7 +18,7 @@ $/ bower install
 ```
 #!python
 
- $/ gulp
+ $/ npm start
 ```
 
 ***
@@ -83,15 +83,12 @@ $/ bower install
 
 
 ##### -- Remarks --
-* Gulp development setup, not optimised for production
-* Gulp rendered (html/js/css/svg) files location > ./public/dist
-* Bower files location > ./public/bower_components 
+* 
 ***
 
 ###### To be completed ?
-* Not completed validation for iphone 6
-* Some issue with layout of table on mobile
-* Login page not done
+*
+
 ***
 
 ##### Thank you

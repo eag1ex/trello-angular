@@ -1,0 +1,11 @@
+<div class="modal-body">
+                <input class="ticket-name" ng-model="vm.tempData.name" />          
+ <div ng-repeat="ticket in vm.tempData.tickets track by $index" class="ticket">
+                <input class="ticket-title" ng-model="ticket.title" />                
+ </div>
+
+   <button class="btn btn-warning" type="button" ng-click="vm.addList()">AddList</button>
+  <button class="btn btn-warning" type="button" ng-click="vm.handleClose()">Close Modal</button>
+  <button class="btn btn-warning" type="button" ng-click="vm.handleDismiss()">Dimiss Modal</button>
+</div>
+

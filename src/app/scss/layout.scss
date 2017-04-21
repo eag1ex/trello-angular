@@ -2,4 +2,22 @@
 // @layout.scss
 //----------------------------
 
+.modal{
+  &.fade{
+    opacity:1!important;//overite
+  }
+    
+  .modal-backdrop.fade{
+        opacity:0!important;//overite
+    }
+
+  .modal-dialog{
+    top: 100px;
+  }
+  .modal-body{
+    padding: 10px;
+    margin: 2px;
+  }
+}
+
 

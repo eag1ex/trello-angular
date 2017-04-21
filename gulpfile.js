@@ -76,7 +76,7 @@ gulp.task('styles-new', function () {
 
   var wireupConf = {
     'ignorePath': '../public/',
-    exclude: ['sass-bem', 'bootstrap-material-design', 'bootstrap-sass'],//, 'bootstrap'
+    exclude: ['sass-bem', 'bootstrap-sass'],//, 'bootstrap'
     directory: './public/bower_components',
   };
 
