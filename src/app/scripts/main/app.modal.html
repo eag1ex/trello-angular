@@ -1,11 +1,43 @@
-<div class="modal-body">
-                <input class="ticket-name" ng-model="vm.tempData.name" />          
- <div ng-repeat="ticket in vm.tempData.tickets track by $index" class="ticket">
-                <input class="ticket-title" ng-model="ticket.title" />                
- </div>
+<div class="d-flex align-content-start flex-wrap card  modal-body m-1">
+  <div class="align-self-start w-75">
+    <div class="card-block">
+      <div class="form-group">
+        <input class="form-control card-title ticket-name w-75" ng-model="vm.tempData.name" aria-describedby="emailHelp" placeholder="Ticket name">
+      </div>
 
-   <button class="btn btn-warning" type="button" ng-click="vm.addList()">AddList</button>
-  <button class="btn btn-warning" type="button" ng-click="vm.handleClose()">Close Modal</button>
-  <button class="btn btn-warning" type="button" ng-click="vm.handleDismiss()">Dimiss Modal</button>
+
+    </div>
+    <div class="card-block">
+      <div class="ticket" ng-repeat="ticket in vm.tempData.tickets track by $index">
+
+        <div class="form-group">
+          <small class="ml-1 card-text">Add Comment</small>
+          <button class="btn-sm btn btn-success" type="button" ng-click="vm.removeList($index)">X</button>
+          <textarea class="form-control" id="exampleTextarea" ng-model="ticket.title" rows="3"></textarea>
+        </div>
+
+      </div>
+    </div>
+    <div class="card-block">
+      <button class="btn-sm btn btn-secondary" type="button" ng-click="vm.addList()">Add List</button>
+      <button class="btn-sm btn btn-secondary" type="button" ng-click="vm.handleClose()">Save</button>
+      <button class="btn-sm btn btn-secondary" type="button" ng-click="vm.handleDismiss()">Dimiss</button>
+      <button class="btn-sm btn btn-success" type="button" ng-click="vm.handleDismiss()">Send</button>
+    </div>
+  </div>
+
+  <div class="align-self-start w-25 mt-4">
+  
+    <div class="card-block add-list p-0">
+      <h6 class="card-title mb-2">Add</h6>
+      <button type="button" class="btn-sm btn btn-secondary float-right  mb-1">Category</button>
+      <button type="button" class="btn-sm btn btn-secondary float-right  mb-1">Members</button>
+      <button type="button" class="btn-sm btn btn-secondary float-right mb-1">Labels</button>
+      <button type="button" class="btn-sm btn btn-secondary float-right mb-1">Checklist</button>
+      <button type="button" class="btn-sm btn btn-secondary float-right  mb-1">Due Date</button>
+      <button type="button" class="btn-sm btn btn-secondary float-right  mb-1">Attachament</button>
+    </div>
+
+  </div>
+
 </div>
-

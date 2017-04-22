@@ -17,9 +17,10 @@ module app {
     httpbackedMockService.run();
   }
 
-  configureStates['$inject'] = ['$stateProvider', '$locationProvider', '$urlRouterProvider'];
+  configureStates['$inject'] = ['$stateProvider', '$locationProvider', '$urlRouterProvider','$qProvider'];
   /* @ngInject */
-  function configureStates($stateProvider, $locationProvider, $urlRouterProvider) {
+  function configureStates($stateProvider, $locationProvider, $urlRouterProvider,$qProvider) {
+    $qProvider.errorOnUnhandledRejections(false);
     $locationProvider.html5Mode(true);
     $urlRouterProvider.otherwise('/');
 

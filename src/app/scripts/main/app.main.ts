@@ -4,14 +4,15 @@ module app.main {
     public dataForModal: any;
     public lists = [];
     public dblclick: any;
-    static $inject: Array<string> = ['$scope', '$element', '$document', '$uibModal', '$timeout'];
+    static $inject: Array<string> = ['$scope', '$element', '$document', '$uibModal', '$timeout', '$q'];
     /* @ngInject */
     constructor(
       public scope: any,
       public element: any,
       public document: any,
       public modal: any,
-      public timeout: any
+      public timeout: any,
+      public q: any
     ) {
 
       element.dblclick((e) => {
@@ -85,6 +86,47 @@ module app.main {
       });
 
     }
+
+    addCard(elmData) {
+      var tempData = angular.copy(elmData);
+
+      var mergeData = (data) => {
+        var deferred = this.q.defer();
+        if (data) deferred.resolve(data);
+        else deferred.reject('error data');
+        return deferred.promise;
+      }
+      var datPromiss = mergeData(tempData);
+      datPromiss.then((data) => {
+        this.lists[0].tickets.push({ title: data });
+      }).finally(() => {
+        console.log('data updated')
+        return;
+      })
+
+    }// addcard
+
+    cancelAddCard(elmData) {
+      /**
+       * 
+       * 
+cardToBeAdded(elmData,i){
+  var tempData = angular.copy(elmData);
+      elmData.tickets.push({ title: 'task 1' }); 
+      this.lists[i]= tempData;
+
+}
+       */
+      console.log('elmData', elmData);
+    }
+    deleteCard(index){
+             this.lists.splice(index,1);
+             this.scope.$watch('lists',()=>{
+                 console.log('card removed!')
+             })          
+    }
+
+
   }
 
   class MainComponent {

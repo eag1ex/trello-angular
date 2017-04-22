@@ -29,7 +29,13 @@ module app.main.modal {
                     }
             },100)
 
-            this.handleClose = () => {                   
+            this.handleClose = () => {
+                // not empty
+                    var returnArrayTickets = this.tempData.tickets.filter(function(n){
+                         return n.title != '' 
+                        }); 
+                    this.tempData.tickets = returnArrayTickets;
+                    console.log('this.tempData',this.tempData)
                   this.$close({ result: this.tempData},function(){
                      this.tempData=[];
                   });
@@ -43,7 +49,13 @@ module app.main.modal {
 
         }
         addList() {
-            this.tempData.tickets.push({ title: 'task 1' });
+            this.tempData.tickets.push({ title: '' });
+        }
+        removeList(index){        
+             this.tempData.tickets.splice(index,1);
+             this.scope.$watch('tempData',()=>{
+                 console.log('data changed!')
+             })          
         }
 
     }
