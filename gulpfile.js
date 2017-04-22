@@ -17,6 +17,7 @@ var wiredep = require('wiredep').stream;
 var gutil = require('gulp-util'); http://localhost:3000/
 var minifyHtml = require('gulp-htmlmin');
 var angularTemplatecache = require('gulp-angular-templatecache');
+var pathExists = require('path-exists');
 
 var port = process.env.PORT || 3000;
 
@@ -40,9 +41,23 @@ gulp.task('clean', function (done) {
 gulp.task('styles-new', function () {
 
 
- // move fonts dit  manyally
+ // move fonts to dist  manually
   gulp.src(app_path + '/scss/fonts/*.*')
     .pipe(gulp.dest(dist_path + '/styles/fonts'));   
+
+
+ // move font-awesome to dist  manually
+ /*
+  gulp.src(app_path + '/scss/fonts/*.*')
+    .pipe(gulp.dest(dist_path + '/styles/fonts'));       
+*/
+var fontAwesomePath = './public/bower_components/font-awesome/';
+
+pathExists(fontAwesomePath).then((exists)=> {
+    gulp.src(fontAwesomePath + '/fonts/*.*')
+    .pipe(gulp.dest(dist_path + '/styles/fonts'));     
+    gutil.log('fontAwesomePath exists', gutil.colors.magenta(fontAwesomPath));
+});
 
   var injectAppFiles = gulp.src([app_path + '/scss/layout.scss'], { read: false });
   var injectAppFonts = gulp.src([app_path + '/scss/fonts.scss'], { read: false });
@@ -79,6 +94,8 @@ gulp.task('styles-new', function () {
     exclude: ['sass-bem', 'bootstrap-sass'],//, 'bootstrap'
     directory: './public/bower_components',
   };
+
+  
 
   return gulp.src(app_path + '/scss/main.scss')
     .pipe(wiredep())

@@ -4,6 +4,7 @@ module app.main {
     public dataForModal: any;
     public lists = [];
     public dblclick: any;
+    public category:any;
     static $inject: Array<string> = ['$scope', '$element', '$document', '$uibModal', '$timeout', '$q'];
     /* @ngInject */
     constructor(
@@ -15,11 +16,14 @@ module app.main {
       public q: any
     ) {
 
+    
       element.dblclick((e) => {
         if (e.target.nodeName == 'INPUT') return false;
         this.openModal(false, false);
         this.dblclick = true;
+
       })
+
 
       this.lists = [
         {
@@ -27,14 +31,16 @@ module app.main {
           tickets: [
             { title: 'task 1' },
             { title: 'task 2' }
-          ]
+          ],
+          desc:'this is a Trello new project, please give me your feedback!'
         },
         {
           name: 'list 2',
           tickets: [
             { title: 'task 3' },
             { title: 'task 4' }
-          ]
+          ],
+          desc:'A new Trello Angular project what is your feedback!'
         }
       ]
     }
@@ -57,7 +63,8 @@ module app.main {
 
       this.modal.open({
         animation: true,
-        template: `<ticket-modal ng-init="vm.modalData"
+        template: `<ticket-modal
+                    
                     modal-data="vm.modalData" $close="$close(result)" 
                     $dismiss="$dismiss(reason)"></ticket-modal>`,
 
@@ -67,7 +74,10 @@ module app.main {
         controllerAs: 'vm',
         resolve: {
           modalData: () => {
-            return this.dataForModal;
+            return {
+              cats:this.scope.$parent.$ctrl.category,
+              main:this.dataForModal
+            }
           }
         }
       }).result.then((result) => {

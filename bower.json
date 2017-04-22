@@ -30,7 +30,8 @@
     "angular-mocks": "1.6.3",
     "angular-bootstrap": "^2.5.0",
     "lodash": "^4.17.4",
-    "angular-drag-and-drop-lists": "~1.4.0"
+    "angular-drag-and-drop-lists": "~1.4.0",
+    "font-awesome": "^4.7.0"
   },
   "resolutions": {
     "jquery": "3.2.1",

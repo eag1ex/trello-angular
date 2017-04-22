@@ -1,123 +1,151 @@
 //----------------------------
 // @layout.scss
 //----------------------------
-
 //----------------------------
 //colors
-
-
 //mixins --------------------
-
 @mixin box-shadow($shadow1, $shadow2:false, $shadow3:false, $shadow4:false, $shadow5:false) {
- $params: $shadow1;
-  @if $shadow2 
-    { $params: $shadow1, $shadow2; }
-    @if $shadow3 != false
-      { $params: $shadow1, $shadow2, $shadow3; }
-      @if $shadow4 != false
-        { $params: $shadow1, $shadow2, $shadow3, $shadow4; }
-        @if $shadow5 != false
-          { $params: $shadow1, $shadow2, $shadow3, $shadow4, $shadow5; }
-
-  -webkit-box-shadow: $params;
-     -moz-box-shadow: $params;
-          box-shadow: $params;
-
+    $params: $shadow1;
+    @if $shadow2 {
+        $params: $shadow1, $shadow2;
+    }
+    @if $shadow3 !=false {
+        $params: $shadow1, $shadow2, $shadow3;
+    }
+    @if $shadow4 !=false {
+        $params: $shadow1, $shadow2, $shadow3, $shadow4;
+    }
+    @if $shadow5 !=false {
+        $params: $shadow1, $shadow2, $shadow3, $shadow4, $shadow5;
+    }
+    -webkit-box-shadow: $params;
+    -moz-box-shadow: $params;
+    box-shadow: $params;
 }
 
-html,body{
-  background: #0275d8!important;
+html,
+body {
+    background: #0275d8!important;
 }
 
-
-
-
-
-.modal{
-  &.fade{
-    opacity:1!important;//overite
-  }
-    
-.modal-content{
-  background: transparent;
-  border: none;
+.hide-me{
+  display: none;
 }
 
-  .modal-backdrop.fade{
-        opacity:0!important;//overite
-    }
-
-  .modal-dialog{
-    top: 100px;
-  }
-  .modal-body{
-    padding: 10px;
-    margin: 2px;
-  }
-  
-  ticket-modal{
-    .card{
-      small.card-text{
-
-      }
-
-    flex-direction: inherit!important;
-    .add-list{
-      button{
-        width: 100%;
-      }
-    }
-  }
-    
-  }
-  
-
+//---------- overites
+.strong,
+.bold {
+    font-weight: bold;
 }
-main{
-  .card{
-    @include box-shadow(1px 1px 2px rgba(0, 0, 0, .2));  
-    background: #eee!important;
-    .remove-card-list{
-      color: #aaa;
-      font-size: 0.7rem;
-      position: absolute;
-      top: 0;
-      right: 0;
+
+i.c1 {
+    color: #000;
+}
+
+i.c2 {
+    color: #555;
+}
+
+i.c3 {
+    color: #999
+}
+
+.modal {
+    &.fade {
+        opacity: 1!important; //overite
     }
-    .card-block{
-      position: relative;
-      padding: 0.5rem;
-      .card-title{
-        color: #777;
-        font-weight: bold;
-        font-size:1rem; 
-        width:100%!important;
-        border: none!important;
-        padding: 3px;
-        background: rgba(0, 0, 0, .01)!important;
-        margin-bottom: 0px;
-      }
+    .modal-content {
+        background: transparent;
+        border: none;
     }
-    .list-group-item{
-      background: #fff!important;
-      padding: 4px!important;
-      margin: 6px!important;
-      border: none!important;
-      @include border-radius(2px);
-      @include box-shadow(1px 1px 2px rgba(0, 0, 0, .05));  
+    .modal-backdrop.fade {
+        opacity: 0!important; //overite
     }
-  }
+    .modal-dialog {
+        top: 100px;
+    }
+    .modal-body {
+        padding: 10px;
+        margin: 2px;
+    }
+    ticket-modal {
+        .card {
+            background: #eee!important;
+            flex-direction: inherit!important;
+            small.card-text {
+             color: #999;
+            }
+            .card-title{
+              opacity: 0.6;
+            }
+
+            .edit-desc{
+              a{
+                font-size: 0.8rem;
+                color: #999;  
+              }
+            }
+
+            .add-list {
+                button {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+main {
+    .add-new-card-group {
+        button {
+            border: none;
+            font-weight: normal!important;
+        }
+    }
+    .card {
+        @include box-shadow(1px 1px 2px rgba(0, 0, 0, .2));
+        background: #eee!important;
+
+        
+        .remove-card-list {
+            color: #aaa;
+            font-size: 0.7rem;
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+        .card-block {
+            position: relative;
+            padding: 0.5rem;
+            .card-title {
+                color: #777;
+                font-weight: bold;
+                font-size: 1rem;
+                width: 100%!important;
+                border: none!important;
+                padding: 3px;
+                background: rgba(0, 0, 0, .01)!important;
+                margin-bottom: 0px;
+            }
+        }
+        .list-group-item {
+            background: #fff!important;
+            padding: 4px!important;
+            margin: 6px!important;
+            border: none!important;
+            @include border-radius(2px);
+            @include box-shadow(1px 1px 2px rgba(0, 0, 0, .05));
+        }
+    }
 }
 
 //buttons------------------------
-button.btn{
-
-    &btn-success{
-      
-    }
+button.btn {
+    &btn-success {}
 }
+
 // forms -----------------------
-textarea.form-control{
-      border: 1px solid rgba(0,0,0,.03);
-       @include box-shadow(1px 1px 2px rgba(0, 0, 0, .03));  
+textarea.form-control {
+    border: 1px solid rgba(0, 0, 0, .03);
+    @include box-shadow(1px 1px 2px rgba(0, 0, 0, .03));
 }

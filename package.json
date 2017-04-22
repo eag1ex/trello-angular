@@ -26,6 +26,7 @@
     "gulp-uglify": "^2.1.2",
     "gulp-util": "^3.0.8",
     "main-bower-files": "^2.13.1",
+    "path-exists": "^3.0.0",
     "typescript": "^2.2.2",
     "wiredep": "^4.0.0"
   }

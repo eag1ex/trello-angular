@@ -7,6 +7,7 @@ module app.main.modal {
         public $dismiss: any;
         public modalData:any;
         public $close: any;
+        public cats:any;
         static $inject: Array<string> = ['$scope', '$element','$timeout'];
         /* @ngInject */
         constructor(
@@ -16,13 +17,14 @@ module app.main.modal {
         ) {
            // initialize 
             this.modalInit()          
-            
+
         }
         modalInit() {
             this.timeout(()=>{
-                    if(this.modalData.inx!=null){
-                       
-                        this.tempData = angular.copy(this.modalData.lists[0]);
+                           
+                    if(this.modalData.main.inx!=null){
+                        this.cats = this.modalData.cats;
+                        this.tempData = angular.copy(this.modalData.main.lists[0]);
                         
                     }else{
                         this.tempData={ name: 'new list', tickets: [] }

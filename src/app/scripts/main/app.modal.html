@@ -1,19 +1,44 @@
 <div class="d-flex align-content-start flex-wrap card  modal-body m-1">
   <div class="align-self-start w-75">
-    <div class="card-block">
-      <div class="form-group">
-        <input class="form-control card-title ticket-name w-75" ng-model="vm.tempData.name" aria-describedby="emailHelp" placeholder="Ticket name">
-      </div>
+    <div class="card-block card-title">
+      <div class="form-group mb-0" ng-init='cardName.is=0; cardName.show=0;'>
+        <h3 class="mb-4 card-text float-left" ng-show='cardName.is==0' ng-click='cardName.is=(cardName.is==0)? 1:0; cardName.show=(cardName.show==0)? 0:1;'
+          ng-mouseover='cardName.show=(cardName.show==0)? 1:0;' ng-mouseleave="cardName.show=(cardName.show==1)? 0:1;">
+          {{ vm.tempData.name}}
+        </h3>
+        <i class="fa fa-pencil-square-o fa-2x float-right mt-1  mr-4" aria-hidden="true" ng-show='cardName.show==1' ng-click='cardName.is=(cardName.is==0)? 1:0; 
+                                    cardName.show=(cardName.show==0)? 1:0;'></i>
 
+        <input class="form-control mb-0 ticket-name w-75" ng-class="{'hide-me': cardName.is==0}" ng-show='cardName.is==1' ng-mouseover='cardName.show=(cardName.show==0)? 1:0;'
+          ng-mouseleave="cardName.show=(cardName.show==1)? 1:0;" ng-model="vm.tempData.name" aria-describedby="emailHelp" placeholder="Ticket name">
+      </div>
+    </div>
+    <div class="card-block cat-list">
 
     </div>
+
+    <div class="clearfix"></div>
+    <div class="card-block pt-0 pb-0 edit-desc">
+      <div class="form-group ml-1 " ng-init='desc.is=0;'>
+        <small class="card-text" ng-show="desc.is==0">Add Description</small>
+        <a href='#' ng-class="{'float-right': desc.is==1}" class='ml-1' ng-click='desc.is=(desc.is==0)? 1:0;'>{{ desc.is==0 ? 'edit': 'hide'}}</a>
+        <textarea class="form-control" ng-model="vm.tempData.desc" rows="3" ng-show="desc.is==1" placeholder="Project description..."></textarea>
+        <p class="card-text" ng-show="desc.is==0" ng-click='desc.is=(desc.is==0)? 1:0;'>
+          {{ vm.tempData.desc | limitTo: 20 }}{{vm.tempData.desc.length > 20 ? '...' : ''}}</p>
+
+      </div>
+    </div>
+
+
+
     <div class="card-block">
       <div class="ticket" ng-repeat="ticket in vm.tempData.tickets track by $index">
 
         <div class="form-group">
           <small class="ml-1 card-text">Add Comment</small>
-          <button class="btn-sm btn btn-success" type="button" ng-click="vm.removeList($index)">X</button>
-          <textarea class="form-control" id="exampleTextarea" ng-model="ticket.title" rows="3"></textarea>
+          <a href="" class="float-right" ng-click="vm.removeList($index)">
+            <i class="fa fa-times c3" aria-hidden="true"></i>&nbsp;</a>
+          <textarea class="form-control" ng-model="ticket.title" rows="3" placeholder="Write description..."></textarea>
         </div>
 
       </div>
@@ -27,10 +52,21 @@
   </div>
 
   <div class="align-self-start w-25 mt-4">
-  
+
     <div class="card-block add-list p-0">
       <h6 class="card-title mb-2">Add</h6>
-      <button type="button" class="btn-sm btn btn-secondary float-right  mb-1">Category</button>
+      <div class="dropdown">
+        <button class="btn-sm btn btn-secondary float-right 
+         mb-1 dropdown-toggle" type="button" id="dropdownMenu2" 
+         data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">List
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+          <button ng-repeat='list in vm.cats track by $index' 
+                  class="dropdown-item" type="button">{{list}}
+          </button>
+        </div>
+      </div>
       <button type="button" class="btn-sm btn btn-secondary float-right  mb-1">Members</button>
       <button type="button" class="btn-sm btn btn-secondary float-right mb-1">Labels</button>
       <button type="button" class="btn-sm btn btn-secondary float-right mb-1">Checklist</button>

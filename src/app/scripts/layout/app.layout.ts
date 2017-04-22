@@ -4,11 +4,22 @@ module app.layout {
   export class LayoutController {
     static $inject: Array<string> = ['$rootScope', 'dataservice'];
     public menus: any;
+    public category:any;
     public loginDetails: any;
     constructor(private $rootScope: any, public dataservice: any) {
       // this.test='layoutController';
      // this.get();
+     this.init();
     } 
+
+
+    init(){
+
+     this.category=[
+        'Inspiration','On Hold','Done',"In Progress"
+      ];
+
+    }
 
     get() {
      /* 
