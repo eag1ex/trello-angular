@@ -5,6 +5,7 @@ module app.main {
     public lists = [];
     public dblclick: any;
     public category:any;
+    public showdblclick1:any;
     static $inject: Array<string> = ['$scope', '$element', '$document', '$uibModal', '$timeout', '$q'];
     /* @ngInject */
     constructor(
@@ -16,18 +17,25 @@ module app.main {
       public q: any
     ) {
 
-    
+    this.showdblclick1 = 'true';
       element.dblclick((e) => {
         if (e.target.nodeName == 'INPUT') return false;
         this.openModal(false, false);
         this.dblclick = true;
-
       })
-
+       element.hover((e) => {     
+        if (e.target.nodeName == 'DIV') {
+          console.log(e.target.nodeName)
+           this.showdblclick1 = true;
+        }else{
+           this.showdblclick1 = false; 
+        }
+      })
 
       this.lists = [
         {
           name: 'list 1',
+          catList:'',
           tickets: [
             { title: 'task 1' },
             { title: 'task 2' }
@@ -36,6 +44,7 @@ module app.main {
         },
         {
           name: 'list 2',
+          catList:'',
           tickets: [
             { title: 'task 3' },
             { title: 'task 4' }

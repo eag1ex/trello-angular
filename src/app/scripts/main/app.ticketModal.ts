@@ -59,6 +59,9 @@ module app.main.modal {
                  console.log('data changed!')
              })          
         }
+        addCatList(name,i){
+            this.tempData['catList']=name;
+        }
 
     }
 

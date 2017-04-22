@@ -1,10 +1,12 @@
 <div class="d-flex align-content-start flex-wrap bd-highlight mb-3" id="stage" dnd-list="vm.lists">
-
-   
-    <div class="card w-25 align-self-start m-1" ng-repeat="list in vm.lists track by $index" class="list p-2" dnd-dragstart="vm.lists.splice($index, 1)"
+    <div class="card w-25 align-self-start m-1" 
+    ng-repeat="list in vm.lists | filter:{ catList:$parent.$ctrl.category.name } track by $index" 
+    class="list p-2" dnd-dragstart="vm.lists.splice($index, 1)"
         dnd-effect-allowed="copy" dnd-draggable="list" dnd-effect-allowed="move">
 
+
         <div class="card-block pb-1">
+            <span class='card-text' ng-show="list.catList.length>0" >{{list.catList}}</span>
             <input class="list-name card-title mt-2" ng-model="list.name" />
             <a href="#" class="btn-sm btn btn-link float-right remove-card-list" ng-click="vm.deleteCard($index)"><i class="fa fa-times" aria-hidden="true"></i>&nbsp;</a>
         </div>
@@ -39,8 +41,7 @@
         </div>
     </div>
 </div>
-<div class="row p-3">
-    <button type="button" class="btn btn-outline-primary" ng-click="vm.openModal()">Add Ticket</button>
-</div>
+<div class="row p-3"> 
 
- index? {{$parent.$ctrl.category.inx}}
+    <button   type="button" class="btn btn-sm btn-outline-primary add-ticket-cta" ng-click="vm.openModal()">Add Ticket</button>
+</div>

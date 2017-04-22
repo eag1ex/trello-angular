@@ -16,11 +16,13 @@
         <a href=""><i class="fa fa-users pr-1" aria-hidden="true"></i>Team Visible</a>
       </div>
 
-      <div class="btn-group  p-2" ng-init="$ctrl.category.inx=10">
+      <div class="btn-group  p-2" ng-init="$ctrl.category.name=''">
         <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Lists</button>
         <div class="dropdown-menu ml-3">
           <a ng-repeat="list in $ctrl.category track by $index" 
-          class="dropdown-item" href="#" ng-click="$ctrl.category.inx=$index" >{{list}}</a>
+          class="dropdown-item" href="#" ng-click="$ctrl.category.name=list" >{{list}}</a>
+           <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#" ng-click="$ctrl.category.name=''">Show All</a>
         </div>
       </div>
 

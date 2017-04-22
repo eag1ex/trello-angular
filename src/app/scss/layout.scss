@@ -79,6 +79,12 @@ i.c3 {
               opacity: 0.6;
             }
 
+            .cat-list{
+                span.cat-name{
+                    color:#0275d8;
+                }
+            }
+
             .edit-desc{
               a{
                 font-size: 0.8rem;
@@ -96,6 +102,15 @@ i.c3 {
 }
 
 main {
+
+    button.add-ticket-cta{
+        &:hover{
+            color: #fff;
+            border-color: #fff; 
+        }
+        color: #00abff;
+     border-color: #00abff; 
+    }
     .add-new-card-group {
         button {
             border: none;
@@ -117,10 +132,18 @@ main {
         .card-block {
             position: relative;
             padding: 0.5rem;
+            span.card-text{
+                font-size: 0.8rem;
+                font-weight: bold;
+                text-transform: uppercase;
+                position: relative;
+                top: -3px;
+                color: #777;
+            }
             .card-title {
                 color: #777;
                 font-weight: bold;
-                font-size: 1rem;
+                font-size: 0.8rem;
                 width: 100%!important;
                 border: none!important;
                 padding: 3px;

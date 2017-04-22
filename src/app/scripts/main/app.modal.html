@@ -1,6 +1,6 @@
 <div class="d-flex align-content-start flex-wrap card  modal-body m-1">
   <div class="align-self-start w-75">
-    <div class="card-block card-title">
+    <div class="card-block card-title pb-0">
       <div class="form-group mb-0" ng-init='cardName.is=0; cardName.show=0;'>
         <h3 class="mb-4 card-text float-left" ng-show='cardName.is==0' ng-click='cardName.is=(cardName.is==0)? 1:0; cardName.show=(cardName.show==0)? 0:1;'
           ng-mouseover='cardName.show=(cardName.show==0)? 1:0;' ng-mouseleave="cardName.show=(cardName.show==1)? 0:1;">
@@ -13,8 +13,12 @@
           ng-mouseleave="cardName.show=(cardName.show==1)? 1:0;" ng-model="vm.tempData.name" aria-describedby="emailHelp" placeholder="Ticket name">
       </div>
     </div>
-    <div class="card-block cat-list">
-
+    <div class="clearfix"></div>
+    <div class="card-block cat-list pt-0">
+      <div class="form-group">
+          <small class="ml-1 card-text">In List <span class='cat-name'>
+          {{vm.tempData.catList.length>0 ? vm.tempData.catList: '&nbsp;Choose List'}}</span></small>
+      </div>
     </div>
 
     <div class="clearfix"></div>
@@ -22,9 +26,9 @@
       <div class="form-group ml-1 " ng-init='desc.is=0;'>
         <small class="card-text" ng-show="desc.is==0">Add Description</small>
         <a href='#' ng-class="{'float-right': desc.is==1}" class='ml-1' ng-click='desc.is=(desc.is==0)? 1:0;'>{{ desc.is==0 ? 'edit': 'hide'}}</a>
-        <textarea class="form-control" ng-model="vm.tempData.desc" rows="3" ng-show="desc.is==1" placeholder="Project description..."></textarea>
-        <p class="card-text" ng-show="desc.is==0" ng-click='desc.is=(desc.is==0)? 1:0;'>
-          {{ vm.tempData.desc | limitTo: 20 }}{{vm.tempData.desc.length > 20 ? '...' : ''}}</p>
+        <textarea ng-class="{'hide-me': desc.is==0}" class="form-control" ng-model="vm.tempData.desc" rows="3" ng-show="desc.is==1" placeholder="Project description..."></textarea>
+        <p class="card-text" ng-show="desc.is==0" ng-click='desc.is=(desc.is==0)? 1:0;' >
+          {{vm.tempData.desc}}</p>
 
       </div>
     </div>
@@ -63,7 +67,8 @@
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
           <button ng-repeat='list in vm.cats track by $index' 
-                  class="dropdown-item" type="button">{{list}}
+                  class="dropdown-item" type="button" ng-click="vm.addCatList(list,$index)">
+                  {{list}}
           </button>
         </div>
       </div>
