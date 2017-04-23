@@ -19,7 +19,10 @@ module app.layout {
 
 
      this.category=[
-        'Inspiration','On Hold','Done',"In Progress"
+        'Inspiration',
+        'On Hold',
+        'Done',
+        "In Progress"
       ];
 
     }

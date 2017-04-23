@@ -48,6 +48,9 @@ html,
 body {
     background: $bkg-color!important;
 }
+.unl{
+    text-decoration: underline;
+}
 
 .neg-l-25{
     margin-left:-25px;
@@ -60,8 +63,8 @@ body {
     @include reset-button();
 }
 
-.hide-me {
-    display: none;
+html .hide-me {
+    display: none!important;
 }
 
 //---------- overites
@@ -82,6 +85,45 @@ i.c3 {
     color: #999
 }
 
+//-------------------- ng-animate
+.animate-enter {
+	-webkit-transition: 1s linear all; /* Chrome */
+	transition: 1s linear all;
+	opacity: 0;
+}
+.animate-enter-active {
+	opacity: 1;
+}
+
+.ng-enter, .ng-hide {
+  /* standard transition code */
+  transition: 0.1s linear all;
+  opacity:0;
+}
+.ng-enter-stagger {
+  /* this will have a 100ms delay between each successive leave animation */
+  transition-delay: 0.1s;
+
+  /* As of 1.4.4, this must always be set: it signals ngAnimate
+    to not accidentally inherit a delay property from another CSS class */
+  transition-duration: 0s;
+
+  /* if you are using animations instead of transitions you should configure as follows:
+    animation-delay: 0.1s;
+    animation-duration: 0s; */
+}
+.ng-enter.ng-enter-active, .ng-show{
+  transition: 0.1s linear all;
+  opacity:1;
+}
+
+
+
+
+
+.modal-backdrop.fade { 
+        opacity: 0.5; //overite
+    }
 .modal {
     &.fade {
         opacity: 1!important; //overite
@@ -90,9 +132,7 @@ i.c3 {
         background: transparent;
         border: none;
     }
-    .modal-backdrop.fade {
-        opacity: 0!important; //overite
-    }
+    
     .modal-dialog {
         top: 100px;
     }
@@ -103,17 +143,28 @@ i.c3 {
     ticket-modal {
         
         .card {
+            background: #eee!important;
+            flex-direction: inherit!important;
+
             h6,button{
                 color: #54585a!important;
             }
-            background: #eee!important;
-            flex-direction: inherit!important;
+
+            .btn-action-list{
+                .btn-primary{
+                    color:#fff!important;
+                }
+            }
+
             .comment-group {
                 p.card-text {
                     background: #e6e4e4;
                     padding-left: 10px!important;
                     @include border-radius(3px);
                     @include box-shadow(1px 1px 1px rgba(0, 0, 0, 0.1));
+                }
+                i.fa-ravelry{
+                    opacity: 0.3;
                 }
                 i.fa-comment-o {
                     margin-left: -25px;
@@ -122,7 +173,7 @@ i.c3 {
             .project-title-group {
                 i.fa-tasks {
                     position: relative;
-                    top: 12px;
+                    top: 7px;
                     margin-left: -25px;
                 }
             }

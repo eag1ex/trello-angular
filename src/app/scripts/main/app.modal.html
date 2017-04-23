@@ -1,13 +1,15 @@
-<div class="p-4 d-flex align-content-start flex-wrap card  modal-body m-1">
+<div class="px-4 pt-0 pb-0 d-flex align-content-start flex-wrap card  modal-body m-1">
   <div class="align-self-start w-75">
     <!--add title -->
     <div class="card-block card-title pb-0 project-title-group">
       <div class="form-group mb-0" ng-init='cardName.is=0; cardName.show=0;'>
         <i class="fa fa-tasks float-left fa-lg" aria-hidden="true"></i>
-        <h3 class="mb-4 card-text float-left" ng-show='cardName.is==0' ng-click='cardName.is=(cardName.is==0)? 1:0; cardName.show=(cardName.show==0)? 0:1;'
+        <h4 class="mb-4 card-text float-left" 
+        ng-class="{'hide-me': cardName.is==1}"
+        ng-show='cardName.is==0' ng-click='cardName.is=(cardName.is==0)? 1:0; cardName.show=(cardName.show==0)? 0:1;'
           ng-mouseover='cardName.show=(cardName.show==0)? 1:0;' ng-mouseleave="cardName.show=(cardName.show==1)? 0:1;">
           {{ vm.tempData.name}}
-        </h3>
+        </h4>
         <i class="fa fa-pencil-square-o fa-2x float-right mt-1  mr-4" aria-hidden="true" ng-show='cardName.show==1' ng-click='cardName.is=(cardName.is==0)? 1:0; cardName.show=(cardName.show==0)? 1:0;'></i>
 
         <input class="form-control mb-0 ticket-name w-75" ng-class="{'hide-me': cardName.is==0}" ng-show='cardName.is==1' ng-mouseover='cardName.show=(cardName.show==0)? 1:0;'
@@ -40,7 +42,7 @@
 
     <!--add comment -->
     <div class="card-block comment-group">
-      <div class="ticket" ng-repeat="ticket in vm.tempData.tickets track by $index">
+      <div class="ticket" ng-repeat="ticket in vm.tempData.tickets track by $index" ng-animate="'animate'">
 
 
         <div class="form-group" ng-init="comment.is=(ticket.title.length==0)? 1:0">
@@ -70,11 +72,11 @@
 
       </div>
     </div>
-    <div class="card-block">
-      <button class="btn-sm btn btn-secondary" type="button" ng-click="vm.addList();">Add List</button>
-      <button class="btn-sm btn btn-secondary" type="button" ng-click="vm.handleClose()">Save</button>
-      <button class="btn-sm btn btn-secondary" type="button" ng-click="vm.handleDismiss()">Dimiss</button>
-      <button class="btn-sm btn btn-success" type="button" ng-click="vm.handleDismiss()">Send</button>
+    <div class="card-block btn-action-list pt-0">
+      <button class="btn-sm btn btn-secondary m-1" type="button" ng-click="vm.addList();">Add List</button>
+      <button class="btn-sm btn btn-secondary m-1" type="button" ng-click="vm.handleClose()">Save</button>
+      <button class="btn-sm btn btn-secondary m-1" type="button" ng-click="vm.handleDismiss()">Dimiss</button>
+      <button class="btn-sm btn btn-primary m-1" type="button" ng-click="vm.handleDismiss()">Send</button>
     </div>
   </div>
 
