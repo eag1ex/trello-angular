@@ -56,7 +56,7 @@ var fontAwesomePath = './public/bower_components/font-awesome/';
 pathExists(fontAwesomePath).then((exists)=> {
     gulp.src(fontAwesomePath + '/fonts/*.*')
     .pipe(gulp.dest(dist_path + '/styles/fonts'));     
-    gutil.log('fontAwesomePath exists', gutil.colors.magenta(fontAwesomPath));
+    gutil.log('fontAwesomePath exists', gutil.colors.magenta(fontAwesomePath));
 });
 
   var injectAppFiles = gulp.src([app_path + '/scss/layout.scss'], { read: false });

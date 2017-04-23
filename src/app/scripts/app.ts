@@ -15,8 +15,7 @@ module app {
     'app.data',
     'app.core',
     'app.layout',
-    'app.main',
-    'app.main.modal'
+    'app.main'
   ]);
 
 }

@@ -5,12 +5,13 @@ module app {
   angular
     .module('app.core')
     .config(configureStates)
-    .run(appRun);
+    .run(appRun)
+    .constant('_', window._)
 
-  appRun['$inject'] = ['httpbackedMockService'];
-  function appRun(httpbackedMockService) {
-    console.log();
-
+  appRun['$inject'] = ['httpbackedMockService','$rootScope'];
+  function appRun(httpbackedMockService,$rootScope) {
+      //lodash globaly
+        $rootScope._ = window._;
 
     ////////
     //////// run fake server
@@ -20,6 +21,8 @@ module app {
   configureStates['$inject'] = ['$stateProvider', '$locationProvider', '$urlRouterProvider','$qProvider'];
   /* @ngInject */
   function configureStates($stateProvider, $locationProvider, $urlRouterProvider,$qProvider) {
+
+
     $qProvider.errorOnUnhandledRejections(false);
     $locationProvider.html5Mode(true);
     $urlRouterProvider.otherwise('/');

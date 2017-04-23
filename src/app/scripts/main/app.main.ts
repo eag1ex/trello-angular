@@ -3,9 +3,8 @@ module app.main {
   export class MainController {
     public dataForModal: any;
     public lists = [];
-    public dblclick: any;
-    public category:any;
-    public showdblclick1:any;
+    public category: any;
+    public showdblclick1: any;
     static $inject: Array<string> = ['$scope', '$element', '$document', '$uibModal', '$timeout', '$q'];
     /* @ngInject */
     constructor(
@@ -17,53 +16,56 @@ module app.main {
       public q: any
     ) {
 
-    this.showdblclick1 = 'true';
+
+
       element.dblclick((e) => {
         if (e.target.nodeName == 'INPUT') return false;
-        this.openModal(false, false);
-        this.dblclick = true;
+        this.openModal(false, null);
       })
-       element.hover((e) => {     
+      element.hover((e) => {
         if (e.target.nodeName == 'DIV') {
           console.log(e.target.nodeName)
-           this.showdblclick1 = true;
-        }else{
-           this.showdblclick1 = false; 
+          this.showdblclick1 = true;
+        } else {
+          this.showdblclick1 = false;
         }
       })
 
       this.lists = [
         {
+          id: 0,
           name: 'list 1',
-          catList:'',
+          catList: '',
           tickets: [
             { title: 'task 1' },
             { title: 'task 2' }
           ],
-          desc:'this is a Trello new project, please give me your feedback!'
+          desc: 'this is a Trello new project, please give me your feedback!'
         },
         {
+          id: 1,
           name: 'list 2',
-          catList:'',
+          catList: '',
           tickets: [
             { title: 'task 3' },
             { title: 'task 4' }
           ],
-          desc:'A new Trello Angular project what is your feedback!'
+          desc: 'A new Trello Angular project what is your feedback!'
         }
       ]
     }
 
     openModal(elmData, _inx) {
 
+      //new item
       if (!elmData && !_inx) {
-        console.log('new item')
         this.dataForModal = {
-          inx: null
+          newIndex: this.lists.length,
+
         }
       }
+      //updating item
       else {
-        console.log('update item')
         this.dataForModal = {
           lists: [elmData],
           inx: _inx
@@ -84,20 +86,21 @@ module app.main {
         resolve: {
           modalData: () => {
             return {
-              cats:this.scope.$parent.$ctrl.category,
-              main:this.dataForModal
+              cats: this.scope.$parent.$ctrl.category,
+              main: this.dataForModal
             }
           }
         }
       }).result.then((result) => {
-        //update
-        if (_inx >= 0) this.lists[_inx] = result;
-        //add new
-        if (_inx == null) this.lists = this.lists.concat(result);
+        var ListsTotalLenght = this.lists.length - 1;
 
-        if (this.dblclick) {
-          this.lists = this.lists.concat(result);
-          this.dblclick = false;
+        //update
+        if (_inx <= ListsTotalLenght) this.lists[_inx] = result;
+
+        //add new
+        if (result.id > ListsTotalLenght) {
+          // sord latest to oldest
+          this.lists = _.orderBy(this.lists.concat(result), ['id'], ['desc', 'asc']);
         }
 
       }, function (reason) {
@@ -106,7 +109,7 @@ module app.main {
 
     }
 
-    addCard(elmData) {
+    addCard(elmData, i) {
       var tempData = angular.copy(elmData);
 
       var mergeData = (data) => {
@@ -117,10 +120,13 @@ module app.main {
       }
       var datPromiss = mergeData(tempData);
       datPromiss.then((data) => {
-        this.lists[0].tickets.push({ title: data });
+        this.lists[i].tickets.unshift({ title: data });
+        
       }).finally(() => {
         console.log('data updated')
         return;
+      }).catch((error) => {
+        // console.log('error',error)
       })
 
     }// addcard
@@ -138,11 +144,11 @@ cardToBeAdded(elmData,i){
        */
       console.log('elmData', elmData);
     }
-    deleteCard(index){
-             this.lists.splice(index,1);
-             this.scope.$watch('lists',()=>{
-                 console.log('card removed!')
-             })          
+    deleteCard(index) {
+      this.lists.splice(index, 1);
+      this.scope.$watch('lists', () => {
+        console.log('card removed!')
+      })
     }
 
 
@@ -158,7 +164,7 @@ cardToBeAdded(elmData,i){
   }
 
   angular
-    .module('app.main', [])
+    .module('app.main', ['app.main.modal'])
   angular
     .module('app.main').component('main', new MainComponent());
 

@@ -23,13 +23,24 @@
     box-shadow: $params;
 }
 
+@mixin reset-button(){
+    border: none!important;
+    border-color: transparent!important;
+    padding: 0!important;
+    margin: 0!important;
+    background: none!important;
+    background-color: transparent!important;
+    color: #fff!important;
+}
+
+
 html,
 body {
     background: #0275d8!important;
 }
 
-.hide-me{
-  display: none;
+.hide-me {
+    display: none;
 }
 
 //---------- overites
@@ -73,25 +84,20 @@ i.c3 {
             background: #eee!important;
             flex-direction: inherit!important;
             small.card-text {
-             color: #999;
+                color: #999;
             }
-            .card-title{
-              opacity: 0.6;
+            .card-title {
+                opacity: 0.6;
             }
-
-            .cat-list{
-                span.cat-name{
-                    color:#0275d8;
+            .cat-list {
+                span.cat-name {
+                    color: #0275d8;
                 }
             }
-
-            .edit-desc{
-              a{
+            a.edit {
                 font-size: 0.8rem;
-                color: #999;  
-              }
+                color: #999;
             }
-
             .add-list {
                 button {
                     width: 100%;
@@ -101,15 +107,25 @@ i.c3 {
     }
 }
 
-main {
+nav{
+    .lists-menu-group{
+        >button{
+          &:hover{
+             @include reset-button();
+          }  
+         @include reset-button();
+        }
+    }
+}
 
-    button.add-ticket-cta{
-        &:hover{
+main {
+    button.add-ticket-cta {
+        &:hover {
             color: #fff;
-            border-color: #fff; 
+            border-color: #fff;
         }
         color: #00abff;
-     border-color: #00abff; 
+        border-color: #00abff;
     }
     .add-new-card-group {
         button {
@@ -120,8 +136,6 @@ main {
     .card {
         @include box-shadow(1px 1px 2px rgba(0, 0, 0, .2));
         background: #eee!important;
-
-        
         .remove-card-list {
             color: #aaa;
             font-size: 0.7rem;
@@ -132,7 +146,7 @@ main {
         .card-block {
             position: relative;
             padding: 0.5rem;
-            span.card-text{
+            span.card-text {
                 font-size: 0.8rem;
                 font-weight: bold;
                 text-transform: uppercase;

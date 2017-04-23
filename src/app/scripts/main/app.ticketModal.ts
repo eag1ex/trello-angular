@@ -3,45 +3,56 @@ module app.main.modal {
     export class MainController {
         public handleClose: any;
         public handleDismiss: any;
-        public tempData:any=[];
+        public tempData: any = [];
         public $dismiss: any;
-        public modalData:any;
+        public modalData: any;
         public $close: any;
-        public cats:any;
-        static $inject: Array<string> = ['$scope', '$element','$timeout'];
+        public cats: any;
+        static $inject: Array<string> = ['$scope', '$element', '$timeout'];
         /* @ngInject */
         constructor(
             public scope: any,
             public element: any,
-            public timeout:any,
+            public timeout: any,
         ) {
-           // initialize 
-            this.modalInit()          
+            // initialize 
+            this.modalInit()
 
         }
         modalInit() {
-            this.timeout(()=>{
-                           
-                    if(this.modalData.main.inx!=null){
-                        this.cats = this.modalData.cats;
-                        this.tempData = angular.copy(this.modalData.main.lists[0]);
-                        
-                    }else{
-                        this.tempData={ name: 'new list', tickets: [] }
+            this.timeout(() => {
+                this.cats = this.modalData.cats;
+
+                // updating       
+                if (this.modalData.main.inx != null) {
+                    console.log('updating?')
+                    
+                    this.tempData = angular.copy(this.modalData.main.lists[0]);
+
+                    // adding new    
+                } if (this.modalData.main.newIndex >= 0) {
+                    console.log('adding new?')
+                    var newID = this.modalData.main.newIndex;
+                    this.tempData = {
+                        id: newID,
+                        name: 'new list',
+                        tickets: [{ title: '' }],
+                        catList: ''
                     }
-            },100)
+                }
+            }, 100)
 
             this.handleClose = () => {
                 // not empty
-                    var returnArrayTickets = this.tempData.tickets.filter(function(n){
-                         return n.title != '' 
-                        }); 
-                    this.tempData.tickets = returnArrayTickets;
-                    console.log('this.tempData',this.tempData)
-                  this.$close({ result: this.tempData},function(){
-                     this.tempData=[];
-                  });
-                 
+                var returnArrayTickets = this.tempData.tickets.filter(function (n) {
+                    return n.title != ''
+                });                
+                this.tempData.tickets = returnArrayTickets;
+
+                this.$close({ result: this.tempData }, function () {
+                    this.tempData = [];
+                });
+
             };
             this.handleDismiss = () => {
                 this.$dismiss({
@@ -51,16 +62,16 @@ module app.main.modal {
 
         }
         addList() {
-            this.tempData.tickets.push({ title: '' });
+            this.tempData.tickets.unshift({ title: '' });            
         }
-        removeList(index){        
-             this.tempData.tickets.splice(index,1);
-             this.scope.$watch('tempData',()=>{
-                 console.log('data changed!')
-             })          
+        removeList(index) {
+            this.tempData.tickets.splice(index, 1);
+            this.scope.$watch('tempData', () => {
+                console.log('data changed!')
+            })
         }
-        addCatList(name,i){
-            this.tempData['catList']=name;
+        addCatList(name, i) {
+            this.tempData['catList'] = name;
         }
 
     }
