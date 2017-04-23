@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "description": "prototype",
   "scripts": {
-    "start": "gulp"
+    "start": "gulp",
+    "nodemailer":"node ./nodemailer/server.js"
   },
   "keywords": [],
   "author": "Michael Polak",
@@ -12,6 +13,7 @@
     "angular-mocks": "^1.6.3",
     "browser-sync": "^2.18.8",
     "del": "^1.2.0",
+    "express": "^4.15.2",
     "gulp": "^3.8.11",
     "gulp-angular-templatecache": "^2.0.0",
     "gulp-concat": "^2.5.2",
@@ -26,6 +28,7 @@
     "gulp-uglify": "^2.1.2",
     "gulp-util": "^3.0.8",
     "main-bower-files": "^2.13.1",
+    "nodemailer": "^4.0.1",
     "path-exists": "^3.0.0",
     "typescript": "^2.2.2",
     "wiredep": "^4.0.0"
