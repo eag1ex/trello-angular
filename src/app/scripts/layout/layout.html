@@ -1,18 +1,21 @@
 <div ng-controller="layoutController as $ctrl">
-  <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
+  <nav class="navbar navbar-toggleable-md navbar-inverse navbar-light">
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText"
       aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
+
     <div class="btn-group w-50" role="group">
-      <div class="btn-group" role="group">
-        <a href="" class="navbar-brand">Design</a>
+      <div class="btn-group w-100" role="group">
+        <project-name></project-name> 
+        
+      <!--  <a href="" class="navbar-brand">Design</a>-->
       </div>
       <div class="btn-group p-2" role="group">
         <a href=""><i class="fa fa-star-o" aria-hidden="true"></i></a>
       </div>
-      <div class="btn-group p-2" role="group">
+      <div class="btn-group p-2 w-100" role="group">
         <a href=""><i class="fa fa-users pr-1" aria-hidden="true"></i>Team Visible</a>
       </div>
 
@@ -46,10 +49,10 @@
       <span class="navbar-text float-right">
       Menu
     </span>
-    </div>
+    </div> 
   </nav>
 
-  <div class="container-fluid mt-4 " ng-controller="layoutController as vm">
-    <div ui-view class="col-sm-12 col-md-12 col-lg-12 mt-5"></div>
+  <div class="container-fluid " ng-controller="layoutController as vm">
+    <div ui-view class="col-sm-12 col-md-12 col-lg-12 mt-2"></div>
   </div>
 </div>

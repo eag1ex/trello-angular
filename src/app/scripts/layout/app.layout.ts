@@ -5,6 +5,7 @@ module app.layout {
     static $inject: Array<string> = ['$rootScope', 'dataservice'];
     public menus: any;
     public category:any;
+    public projectName:any;
     public loginDetails: any;
     constructor(private $rootScope: any, public dataservice: any) {
       // this.test='layoutController';
@@ -14,6 +15,8 @@ module app.layout {
 
 
     init(){
+     ///console.log('ang', angular.element(this.projectName));
+
 
      this.category=[
         'Inspiration','On Hold','Done',"In Progress"

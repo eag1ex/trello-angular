@@ -23,7 +23,7 @@
     box-shadow: $params;
 }
 
-@mixin reset-button(){
+@mixin reset-button() {
     border: none!important;
     border-color: transparent!important;
     padding: 0!important;
@@ -33,10 +33,31 @@
     color: #fff!important;
 }
 
+@mixin reset-input() {
+    border: none!important;
+    border-color: transparent!important;
+    background: none!important;
+    background-color: transparent!important;
+    color: #fff!important;
+    padding: 0;
+    margin: 0;
+}
 
+$bkg-color:#0275d8;
 html,
 body {
-    background: #0275d8!important;
+    background: $bkg-color!important;
+}
+
+.neg-l-25{
+    margin-left:-25px;
+}
+.r-input {
+    @include reset-input();
+}
+
+.r-btn {
+    @include reset-button();
 }
 
 .hide-me {
@@ -80,9 +101,31 @@ i.c3 {
         margin: 2px;
     }
     ticket-modal {
+        
         .card {
+            h6,button{
+                color: #54585a!important;
+            }
             background: #eee!important;
             flex-direction: inherit!important;
+            .comment-group {
+                p.card-text {
+                    background: #e6e4e4;
+                    padding-left: 10px!important;
+                    @include border-radius(3px);
+                    @include box-shadow(1px 1px 1px rgba(0, 0, 0, 0.1));
+                }
+                i.fa-comment-o {
+                    margin-left: -25px;
+                }
+            }
+            .project-title-group {
+                i.fa-tasks {
+                    position: relative;
+                    top: 12px;
+                    margin-left: -25px;
+                }
+            }
             small.card-text {
                 color: #999;
             }
@@ -90,8 +133,10 @@ i.c3 {
                 opacity: 0.6;
             }
             .cat-list {
+                position: relative;
+                top: -14px;
                 span.cat-name {
-                    color: #0275d8;
+                    color: $bkg-color;
                 }
             }
             a.edit {
@@ -100,6 +145,7 @@ i.c3 {
             }
             .add-list {
                 button {
+                    font-size: 0.8rem;
                     width: 100%;
                 }
             }
@@ -107,13 +153,31 @@ i.c3 {
     }
 }
 
-nav{
-    .lists-menu-group{
-        >button{
-          &:hover{
-             @include reset-button();
-          }  
-         @include reset-button();
+nav {
+    project-name {
+        display: flex;
+        flex-direction: row;
+    }
+    input.main-project-name {
+        @include reset-input();
+        font-weight: bold;
+        &::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+    }
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    a {
+        color: #fff;
+    }
+    &.navbar {
+        background: $bkg-color!important;
+    }
+    .lists-menu-group {
+        >button {
+            &:hover {
+                @include reset-button();
+            }
+            @include reset-button();
         }
     }
 }

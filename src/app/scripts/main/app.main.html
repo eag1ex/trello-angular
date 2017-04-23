@@ -1,3 +1,11 @@
+
+<!-- add ticket -->
+<div class="row pl-4 py-2"> 
+    <button  type="button" class="btn btn-sm btn-outline-primary add-ticket-cta" 
+            ng-click="vm.openModal()">Add Ticket</button>
+</div>
+
+<!-- tickets -->
 <div class="d-flex align-content-start flex-wrap bd-highlight mb-3" id="stage" dnd-list="vm.lists">
     
     <div class="card w-25 align-self-start m-1" 
@@ -56,7 +64,4 @@
         </div>
     </div>
 </div>
-<div class="row p-3"> 
-    <button  type="button" class="btn btn-sm btn-outline-primary add-ticket-cta" 
-            ng-click="vm.openModal()">Add Ticket</button>
-</div>
+
