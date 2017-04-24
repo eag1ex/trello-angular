@@ -4,9 +4,7 @@
     <div class="card-block card-title pb-0 project-title-group">
       <div class="form-group mb-0" ng-init='cardName.is=0; cardName.show=0;'>
         <i class="fa fa-tasks float-left fa-lg" aria-hidden="true"></i>
-        <h4 class="mb-4 card-text float-left" 
-        ng-class="{'hide-me': cardName.is==1}"
-        ng-show='cardName.is==0' ng-click='cardName.is=(cardName.is==0)? 1:0; cardName.show=(cardName.show==0)? 0:1;'
+        <h4 class="mb-4 card-text float-left" ng-class="{'hide-me': cardName.is==1}" ng-show='cardName.is==0' ng-click='cardName.is=(cardName.is==0)? 1:0; cardName.show=(cardName.show==0)? 0:1;'
           ng-mouseover='cardName.show=(cardName.show==0)? 1:0;' ng-mouseleave="cardName.show=(cardName.show==1)? 0:1;">
           {{ vm.tempData.name}}
         </h4>
@@ -51,8 +49,7 @@
           <a href="" class="float-right" ng-click="vm.removeList($index)">
             <i class="fa fa-times c3" aria-hidden="true"></i>&nbsp;</a>
 
-          <a ng-hide="ticket.title.length==0" class='edit pr-2 float-right' href='#'
-          ng-click='comment.is=(comment.is==0)? 1:0;'>
+          <a ng-hide="ticket.title.length==0" class='edit pr-2 float-right' href='#' ng-click='comment.is=(comment.is==0)? 1:0;'>
             {{ comment.is==0 ? 'edit': 'hide'}}</a>
 
           <div class="clearfix"></div>
@@ -72,12 +69,14 @@
 
       </div>
     </div>
-    <div class="card-block btn-action-list pt-0">
-      <button class="btn-sm btn btn-secondary m-1" type="button" ng-click="vm.addList();">Add List</button>
-      <button class="btn-sm btn btn-secondary m-1" type="button" ng-click="vm.handleClose()">Save</button>
-      <button class="btn-sm btn btn-secondary m-1" type="button" ng-click="vm.handleDismiss()">Dimiss</button>
-      <button class="btn-sm btn btn-primary m-1" type="button" ng-click="vm.handleDismiss()">Send</button>
+
+
+    <div class="clearfix"></div>
+
+    <div class="card-block pt-0 pb-0">
+      <email-form></email-form>
     </div>
+
   </div>
 
   <div class="align-self-start w-25 mt-4">
@@ -104,6 +103,15 @@
                             <i class="fa fa-clock-o float-left" aria-hidden="true"></i>Due Date</button>
       <button type="button" class="btn-sm btn btn-secondary float-right  mb-1">
                             <i class="fa fa-paperclip float-left" aria-hidden="true"></i>Attachament</button>
+    </div>
+  </div>
+  <div class="clearfix"></div>
+  <div class="align-self-start w-100 mt-4">
+    <div class="card-block btn-action-list pt-0">
+      <button class="btn-sm btn btn-secondary m-1" type="button" ng-click="vm.addList();">Add List</button>
+      <button class="btn-sm btn btn-secondary m-1" type="button" ng-click="vm.handleClose()">Save</button>
+      <button class="btn-sm btn btn-secondary m-1" type="button" ng-click="vm.handleDismiss()">Dimiss</button>
+      <button class="btn btn-sm btn-primary m-1" type="button">Send</button>
     </div>
   </div>
 </div>

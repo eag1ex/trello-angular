@@ -8,14 +8,14 @@ module app {
     .run(appRun)
     .constant('_', window._)
 
-  appRun['$inject'] = ['httpbackedMockService','$rootScope'];
-  function appRun(httpbackedMockService,$rootScope) {
+  appRun['$inject'] = ['$rootScope'];
+  function appRun($rootScope) {
       //lodash globaly
         $rootScope._ = window._;
 
     ////////
     //////// run fake server
-    httpbackedMockService.run();
+  //  httpbackedMockService.run();
   }
 
   configureStates['$inject'] = ['$stateProvider', '$locationProvider', '$urlRouterProvider','$qProvider'];

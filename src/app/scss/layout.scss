@@ -290,6 +290,18 @@ main {
         }
     }
 }
+email-form{
+    form{
+        min-height: 100px;
+        input{
+            &::placeholder{
+                color: rgba(0,0,0,0.3);
+            }
+        }
+    }
+}
+
+
 
 //buttons------------------------
 button.btn {

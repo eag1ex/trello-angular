@@ -2,12 +2,12 @@ module app.layout {
   'use strict';
 
   export class LayoutController {
-    static $inject: Array<string> = ['$rootScope', 'dataservice'];
+    static $inject: Array<string> = ['$rootScope','$scope'];
     public menus: any;
     public category:any;
     public projectName:any;
     public loginDetails: any;
-    constructor(private $rootScope: any, public dataservice: any) {
+    constructor(private $rootScope: any, public scope:any) {
       // this.test='layoutController';
      // this.get();
      this.init();
@@ -15,8 +15,10 @@ module app.layout {
 
 
     init(){
-     ///console.log('ang', angular.element(this.projectName));
-
+    
+        this.scope.$broadcast('myCustomEvent', {
+          someProp: 'Sending you an Object!' // send whatever you want
+        });
 
      this.category=[
         'Inspiration',

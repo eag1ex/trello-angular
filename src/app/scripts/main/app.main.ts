@@ -5,6 +5,7 @@ module app.main {
     public lists = [];
     public category: any;
     public showdblclick1: any;
+    public user:any;
     static $inject: Array<string> = ['$scope', '$element', '$document', '$uibModal', '$timeout', '$q'];
     /* @ngInject */
     constructor(
@@ -30,6 +31,15 @@ module app.main {
           this.showdblclick1 = false;
         }
       })
+
+      this.user=
+        {
+          firstName:"Guy",
+          lastName:"",
+          company:"Invision",
+          email:"guy@email.com",
+        }
+      
 
       this.lists = [
         {
@@ -87,7 +97,8 @@ module app.main {
           modalData: () => {
             return {
               cats: this.scope.$parent.$ctrl.category,
-              main: this.dataForModal
+              main: this.dataForModal,
+              user: this.user
             }
           }
         }

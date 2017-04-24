@@ -8,6 +8,7 @@ module app.main.modal {
         public modalData: any;
         public $close: any;
         public cats: any;
+        public formDATA: any;
         static $inject: Array<string> = ['$scope', '$element', '$timeout'];
         /* @ngInject */
         constructor(
@@ -15,24 +16,30 @@ module app.main.modal {
             public element: any,
             public timeout: any,
         ) {
+
+
             // initialize 
-            this.modalInit()
+            this.modalInit();
 
         }
+
+        
+
         modalInit() {
+
             this.timeout(() => {
                 this.cats = this.modalData.cats;
-
                 // updating       
                 if (this.modalData.main.inx != null) {
                     console.log('updating?')
-                    
+
                     this.tempData = angular.copy(this.modalData.main.lists[0]);
 
                     // adding new    
                 } if (this.modalData.main.newIndex >= 0) {
                     console.log('adding new?')
                     var newID = this.modalData.main.newIndex;
+                    //passing data to object
                     this.tempData = {
                         id: newID,
                         name: 'new list',
@@ -46,7 +53,7 @@ module app.main.modal {
                 // not empty
                 var returnArrayTickets = this.tempData.tickets.filter(function (n) {
                     return n.title != ''
-                });                
+                });
                 this.tempData.tickets = returnArrayTickets;
 
                 this.$close({ result: this.tempData }, function () {
@@ -58,11 +65,15 @@ module app.main.modal {
                 this.$dismiss({
                     reason: 'cancel'
                 });
+                this.SUBMITFORMIS = 0;
             };
 
         }
+        
+
         addList() {
-            this.tempData.tickets.unshift({ title: '' });            
+           
+            this.tempData.tickets.unshift({ title: '' });
         }
         removeList(index) {
             this.tempData.tickets.splice(index, 1);
@@ -74,6 +85,8 @@ module app.main.modal {
             this.tempData['catList'] = name;
         }
 
+
+
     }
 
     class MainComponent {
@@ -83,6 +96,7 @@ module app.main.modal {
             $dismiss: '&',
             modalData: '<'
         };
+        transclude = true;
         controllerAs = "vm";
         templateUrl = 'dist/js/app.modal.html';
         controller = MainController;
@@ -94,20 +108,3 @@ module app.main.modal {
         .module('app.main.modal').component('ticketModal', new MainComponent());
 
 }
-
-
-
-
-
-/*
-      var opts = {
-        backdrop: true,
-        backdropClick: true,
-        dialogFade: false,
-        keyboard: true,
-        controllerAs: '$ctrl',
-        templateUrl: 'app.ticketModal.html',
-        controller: /* @ngInject ModalInstanceCtrl,
-      //  resolve: {} // empty storage
-      //};
-*/

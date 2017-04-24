@@ -4,7 +4,7 @@
   "description": "prototype",
   "scripts": {
     "start": "gulp",
-    "nodemailer":"node ./nodemailer/server.js"
+    "nodemailer": "node ./nodemailer/server.js"
   },
   "keywords": [],
   "author": "Michael Polak",
@@ -12,6 +12,7 @@
   "devDependencies": {
     "angular-mocks": "^1.6.3",
     "browser-sync": "^2.18.8",
+    "cors": "^2.8.3",
     "del": "^1.2.0",
     "express": "^4.15.2",
     "gulp": "^3.8.11",

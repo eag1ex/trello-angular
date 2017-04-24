@@ -9,14 +9,15 @@ module app {
     'ui.router',
     'ui.bootstrap',
     'ngAnimate',
-    'ngMockE2E',
+   // 'ngMockE2E',
     'dndLists',
 
-    'app.data',
+   // 'app.data',
     'app.core',
     'app.layout',
     'app.main',
-    'app.projectName'
+    'app.projectName',
+    'app.emailForm'
   ]);
 
 }
