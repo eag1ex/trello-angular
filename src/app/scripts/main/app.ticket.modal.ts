@@ -29,7 +29,9 @@ module app.main.modal {
         modalInit() {
 
             this.timeout(() => {
+                console.log('this.hideself',this.hideself)
                 this.cats = this.modalData.cats;
+                this.hideself=0;
                 // updating       
                 if (this.modalData.main.inx != null) {
                     console.log('updating..')
@@ -52,6 +54,7 @@ module app.main.modal {
 
             this.handleClose = () => {
                 // not empty
+                this.hideself=1;
                 var returnArrayTickets = this.tempData.tickets.filter(function (n) {
                     return n.title != ''
                 });
@@ -89,6 +92,7 @@ module app.main.modal {
             $close: '&',
             $dismiss: '&',
             modalData: '<'
+            hideself:"="
         };
         transclude = true;
         controllerAs = "vm";

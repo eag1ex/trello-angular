@@ -9,10 +9,14 @@ module app {
     .constant('_', window._)
     .constant('API', {'EMAIL':"http://localhost:3100/send",  'DATA':null})
 
-  appRun['$inject'] = ['$rootScope'];
-  function appRun($rootScope) {
+  appRun['$inject'] = ['$rootScope','$timeout'];
+  function appRun($rootScope,$timeout) {
       //lodash globaly
         $rootScope._ = window._;
+        $rootScope.angularLoader = 0;
+        $rootScope.$on("$stateChangeSuccess", function(){       
+          console.log('angular Loaded');
+        });     
   }
 
   configureStates['$inject'] = ['$stateProvider', '$locationProvider', '$urlRouterProvider','$qProvider'];

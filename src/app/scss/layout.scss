@@ -1,3 +1,7 @@
+
+// include animation before app loads
+@import '_preloader';
+
 //----------------------------
 // @layout.scss
 //----------------------------
@@ -49,6 +53,10 @@ body {
     background: $bkg-color!important;
 }
 
+.angular-app-include{
+    opacity: 0;
+}
+
 .center {
     margin: 0 auto;
     text-align: center;
@@ -92,6 +100,7 @@ i.c3 {
     color: #999
 }
 
+
 //-------------------- ng-animate
 .animate-enter {
     -webkit-transition: 1s linear all;
@@ -132,10 +141,27 @@ i.c3 {
     opacity: 0.5; //overite
 }
 
+.fade-in {
+  -webkit-transition: 0.1s linear all;
+  transition: 0.1s linear all;
+}
+.fade-in.ng-enter {
+  opacity: 0;
+}
+.fade-in.ng-enter.ng-enter-active {
+  opacity: 1;
+}
+.fade-in.ng-leave {
+  opacity: 1;
+}
+.fade-in.ng-leave.ng-leave-active {
+  opacity: 0;
+}
+
 
 .modal {
     &.fade {
-        opacity: 1!important; //overite
+        opacity:1!important;
     }
     .modal-content {
         background: transparent;
@@ -211,6 +237,7 @@ i.c3 {
 }
 
 nav {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
     project-name {
         display: flex;
         flex-direction: row;
@@ -222,7 +249,7 @@ nav {
             color: rgba(255, 255, 255, 0.5);
         }
     }
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    
     a {
         color: #fff;
     }

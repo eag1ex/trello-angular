@@ -31,6 +31,10 @@ gulp.task('clean', function (done) {
 
 gulp.task('styles-new', function () {
 
+  // move svg image for preloader only
+   gulp.src(app_path + '/scss/*.svg')
+    .pipe(gulp.dest(dist_path + '/styles'));
+
  // move font-awesome to dist  manually
 var fontAwesomePath = './public/bower_components/font-awesome/';
 

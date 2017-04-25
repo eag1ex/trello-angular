@@ -15,6 +15,8 @@ module app.layout {
        *             >> form is send if the nodemailer is running.
        */
 
+      
+
      mockData.data().then((data)=>{
       this.category = data.category;
      },(error)=>{

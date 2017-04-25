@@ -53,19 +53,23 @@ module app.main {
        * Calling our modal which loads modal directive/component 'ticketModal'
        * 
        */
-
+       var _t = this;
       this.modal.open({
+     //   windowClass:'ng-show',
+       // backdropClass:'ng-show'
         animation: true,
-        template: `<ticket-modal
-                    
+        template: `<ticket-modal hideself='vm.hideself'
+                    ng-hide="vm.hideself==1"
                     modal-data="vm.modalData" $close="$close(result)" 
                     $dismiss="$dismiss(reason)"></ticket-modal>`,
 
-        controller: ['modalData', function (modalData) {
+        controller: ['modalData','hideself', function (modalData,hideself) {
           this.modalData = modalData;
-        }],
+          this.hideself=hideself;
+        }]
         controllerAs: 'vm',
         resolve: {
+          hideself:0,
           modalData: () => {
             return {
               cats: this.scope.$parent.$ctrl.category,
