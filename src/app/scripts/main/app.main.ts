@@ -4,9 +4,8 @@ module app.main {
     public dataForModal: any;
     public lists = [];
     public category: any;
-    public showdblclick1: any;
-    public user:any;
-    static $inject: Array<string> = ['$scope', '$element', '$document', '$uibModal', '$timeout', '$q'];
+    public user: any;
+    static $inject: Array<string> = ['$scope', '$element', '$document', '$uibModal', '$timeout', '$q', 'mockData'];
     /* @ngInject */
     constructor(
       public scope: any,
@@ -14,56 +13,24 @@ module app.main {
       public document: any,
       public modal: any,
       public timeout: any,
-      public q: any
+      public q: any,
+      private mockData
     ) {
-
-
 
       element.dblclick((e) => {
         if (e.target.nodeName == 'INPUT') return false;
         this.openModal(false, null);
       })
-      element.hover((e) => {
-        if (e.target.nodeName == 'DIV') {
-          console.log(e.target.nodeName)
-          this.showdblclick1 = true;
-        } else {
-          this.showdblclick1 = false;
-        }
+
+      //our data!
+      mockData.data().then((data) => {
+        this.user = data.user;
+        this.lists = data.lists;
+      }, (error) => {
+        console.log('data not available', error)
       })
-
-      this.user=
-        {
-          firstName:"Guy",
-          lastName:"",
-          company:"Invision",
-          email:"guy@email.com",
-        }
-      
-
-      this.lists = [
-        {
-          id: 0,
-          name: 'list 1',
-          catList: '',
-          tickets: [
-            { title: 'task 1' },
-            { title: 'task 2' }
-          ],
-          desc: 'this is a Trello new project, please give me your feedback!'
-        },
-        {
-          id: 1,
-          name: 'list 2',
-          catList: '',
-          tickets: [
-            { title: 'task 3' },
-            { title: 'task 4' }
-          ],
-          desc: 'A new Trello Angular project what is your feedback!'
-        }
-      ]
     }
+
 
     openModal(elmData, _inx) {
 
@@ -81,6 +48,11 @@ module app.main {
           inx: _inx
         }
       }
+
+      /**
+       * Calling our modal which loads modal directive/component 'ticketModal'
+       * 
+       */
 
       this.modal.open({
         animation: true,
@@ -132,7 +104,7 @@ module app.main {
       var datPromiss = mergeData(tempData);
       datPromiss.then((data) => {
         this.lists[i].tickets.unshift({ title: data });
-        
+
       }).finally(() => {
         console.log('data updated')
         return;
@@ -142,27 +114,12 @@ module app.main {
 
     }// addcard
 
-    cancelAddCard(elmData) {
-      /**
-       * 
-       * 
-cardToBeAdded(elmData,i){
-  var tempData = angular.copy(elmData);
-      elmData.tickets.push({ title: 'task 1' }); 
-      this.lists[i]= tempData;
-
-}
-       */
-      console.log('elmData', elmData);
-    }
     deleteCard(index) {
       this.lists.splice(index, 1);
       this.scope.$watch('lists', () => {
         console.log('card removed!')
       })
     }
-
-
   }
 
   class MainComponent {

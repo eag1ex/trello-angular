@@ -2,42 +2,26 @@ module app.layout {
   'use strict';
 
   export class LayoutController {
-    static $inject: Array<string> = ['$rootScope','$scope'];
-    public menus: any;
+    static $inject: Array<string> = ['$scope','mockData'];
     public category:any;
-    public projectName:any;
-    public loginDetails: any;
-    constructor(private $rootScope: any, public scope:any) {
-      // this.test='layoutController';
-     // this.get();
-     this.init();
+    constructor(public scope:any, private mockData:any) {
+
+      /**
+       *  The hierarchy of this app is:
+       *  Layout  <<< mockData
+       *     > main  <<< mockData
+       *        > modal <<< data from parent
+       *          > send form  <<< data from parent
+       *             >> form is send if the nodemailer is running.
+       */
+
+     mockData.data().then((data)=>{
+      this.category = data.category;
+     },(error)=>{
+       console.log('category data not available', error)
+     })
+
     } 
-
-
-    init(){
-    
-        this.scope.$broadcast('myCustomEvent', {
-          someProp: 'Sending you an Object!' // send whatever you want
-        });
-
-     this.category=[
-        'Inspiration',
-        'On Hold',
-        'Done',
-        "In Progress"
-      ];
-
-    }
-
-    get() {
-     /* 
-      this.dataservice.get().then((data) => {
-        this.loginDetails = data.loginDetails[0];
-        console.log('data', data.menuItems)
-        this.menus = data.menuItems;
-      });
-      */
-    }
 
   }
   angular

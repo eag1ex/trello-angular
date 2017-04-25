@@ -132,6 +132,7 @@ i.c3 {
     opacity: 0.5; //overite
 }
 
+
 .modal {
     &.fade {
         opacity: 1!important; //overite
@@ -263,6 +264,15 @@ main {
             top: 0;
             right: 0;
         }
+         .list-group {
+                li {
+                    cursor: pointer;
+                    &:hover {
+                        background: rgba(0, 0, 0, 0.04)!important;
+                        transition: 0.1s linear all;
+                    }
+                }
+            }
         .card-block {
             position: relative;
             padding: 0.5rem;
@@ -284,6 +294,7 @@ main {
                 background: rgba(0, 0, 0, .01)!important;
                 margin-bottom: 0px;
             }
+           
         }
         .list-group-item {
             background: #fff!important;
@@ -296,9 +307,7 @@ main {
     }
 }
 
-.email-form-outer {
-
-}
+.email-form-outer {}
 
 email-form {
     position: absolute;
@@ -307,14 +316,12 @@ email-form {
     left: 0;
     overflow: hidden;
     height: 100%;
-
-    .form-control-feedback{
-        .fa-smile-o::before{
+    .form-control-feedback {
+        .fa-smile-o::before {
             position: relative;
             top: 13px;
         }
     }
-
     >.container {
         margin-top: 30%;
         position: relative;
@@ -323,7 +330,7 @@ email-form {
     .back-fill {
         background: rgba(255, 255, 255, 0.7);
         width: 100%;
-        height: 500px;
+        height: 3000px;
         position: absolute;
         top: 0px;
         z-index: 1;

@@ -10,16 +10,15 @@ module app.projectName {
         template=`
                 <input ng-model='$ctrl.projectName' 
                 class="form-control main-project-name" 
-                placeholder="Project Name" value="">
+                placeholder="Enter Project" value="">
                 `;
-        restrict = 'E';
+        restrict = 'E'; 
         controller(){
 
         }
         link(scope, elements, attrs) {
             var input = angular.element(elements[0]).find('input');
             input.focus(()=>{
-                console.log('im focused!')
             })
             input.focus();
         }

@@ -42,12 +42,16 @@ module app.emailForm {
                             var formReset = this.scope.myForm
                             this.form.is=0;
                             this.emailTo='',
-                            formReset.$setPristine(true)
-                            console.log('formReset ',formReset)
-                            console.log('form reset?')
+                            formReset.$setPristine(true);
                     }
-            },true)
+            },true);
         }
+
+        /**
+       * Our emailForm is the dependant of ticketModal component/directive
+       * is grabs data from to send email.
+       */
+
 
         sendFormRequest() {
             var formis = this.scope.myForm.emailTo;

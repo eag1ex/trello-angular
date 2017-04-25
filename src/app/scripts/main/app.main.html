@@ -51,7 +51,9 @@
         </div>
 
         <ul class="list-group list-group-flush">
-            <li ng-repeat="ticket in list.tickets track by $index" class="ticket list-group-item">
+            <li ng-repeat="ticket in list.tickets track by $index" 
+                class="ticket list-group-item"
+                ng-click="vm.openModal(list,$index)" >
                 {{ticket.title}}
             </li>
         </ul>

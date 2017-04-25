@@ -8,7 +8,6 @@ app.use(cors());
 	Here we are configuring our SMTP Server details.
 	STMP is mail server which is responsible for sending and recieving email.
 */
-
 var userEmail = 'mike@email.creativeatwork.net';
 
 /**
@@ -20,7 +19,6 @@ var userEmail = 'mike@email.creativeatwork.net';
         user: EMAIL_ID,
         pass: 'YOUR_PASSWORD'
     },
- * 
  */
 var smtpTransport = nodemailer.createTransport({
     //  use_authentication: false,
@@ -34,13 +32,13 @@ var smtpTransport = nodemailer.createTransport({
     },
     tls: { rejectUnauthorized: false },
 });
-
 /*------------------SMTP Over-----------------------------*/
 
 
+
+
+
 /*------------------Routing Started ------------------------*/
-
-
 app.get('/', function (req, res) {
     //FOR TESTING TRY THIS FROM
     res.sendfile('./nodemailer/index.html');

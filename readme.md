@@ -1,4 +1,6 @@
 #### - Trello Angular -
+A Trello like looking App using Angular.js and Bootstrap 4/Flexbox witn Nodemailer.
+
 
 ######Repo
 
@@ -18,15 +20,16 @@ $/ bower install
 ```
 #!python
 
+  $/ npm run nodemailer   
  $/ npm start
 ```
 
 ***
 ##### Stack/Setup
-* Angular 1.6/component, BootStrap alpha.6/Flexbox, Sass, Typescript
-* Integraded Fake server, can be swapped to real API
+* Angular 1.6/component, BootStrap alpha.6/Flexbox, Sass, Typescript, nodejs/Express, Nodemailer
 * Following John Papa Angular Styleguide
-* Sass Methologies
+* Integraded in modular fashion
+* Using mock data as service
 * Coded in OOP
 ***
 
@@ -37,21 +40,19 @@ $/ bower install
 
 >> scripts
 
->>> dashboard
+>>> main
 
->>>> app.dashboard.html
+>>>> app.main.ts
+
+>>>> app.main.html
+
+>>>> app.ticket.modal.html
 
 >>>> app.dashboard.ts
 
->>> fake.data.server
+>>> services
 
->>>> _mockdata.ts
-
->>>> dataservice.ts
-
->>>> httpbackedMockService.ts
-
->>>> module.data.ts
+>>>> mock.data.ts
 
 >>> layout
 
@@ -65,29 +66,41 @@ $/ bower install
 
 >> scss
 
->>> fonts/
-
->>> _sprite.scss
-
 >>> global.variables.scss
 
 >>> layout.scss
 
 >>> main.scss
 
->>> svg_sprite.svg
-
 > index.html
+
+```
+#!python
+
+     /**
+       *  The hierarchy of this app is:
+       *  Layout  <<< mockData
+       *     > main  <<< mockData
+       *        > modal <<< data from parent
+       *          > send form  <<< data from parent
+       *             >> form is send if nodemailer is running.
+       */
+```
 
 ***
 
-
 ##### -- Remarks --
-* 
+* Not a complete project
+* View card and edit view are the same form
+* Not tested for mobile
+* You need to setup your own SMTP to use and test ./nodemailer/  
 ***
 
 ###### To be completed ?
-*
+* Not a complete project
+* View card and edit view are the same form
+* Not tested for mobile
+* 
 
 ***
 

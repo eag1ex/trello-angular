@@ -13,16 +13,11 @@ module app {
   function appRun($rootScope) {
       //lodash globaly
         $rootScope._ = window._;
-
-    ////////
-    //////// run fake server
-  //  httpbackedMockService.run();
   }
 
   configureStates['$inject'] = ['$stateProvider', '$locationProvider', '$urlRouterProvider','$qProvider'];
   /* @ngInject */
   function configureStates($stateProvider, $locationProvider, $urlRouterProvider,$qProvider) {
-
 
     $qProvider.errorOnUnhandledRejections(false);
     $locationProvider.html5Mode(true);
@@ -30,7 +25,7 @@ module app {
 
     var states: any[] = getStates();
     states.forEach(function (state) {
-      console.log(state.state)
+      console.log('state> ',state.state)
       $stateProvider.state(state.state, state.config);
     });
   }

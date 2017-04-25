@@ -17,11 +17,14 @@ module app.main.modal {
             public timeout: any,
         ) {
 
-
             // initialize 
             this.modalInit();
+        }
 
-        }      
+       /**
+       * Our Ticket modal is the parent of emailForm component/directive
+       * 
+       */
 
         modalInit() {
 
@@ -29,13 +32,12 @@ module app.main.modal {
                 this.cats = this.modalData.cats;
                 // updating       
                 if (this.modalData.main.inx != null) {
-                    console.log('updating?')
-
+                    console.log('updating..')
                     this.tempData = angular.copy(this.modalData.main.lists[0]);
 
                     // adding new    
                 } if (this.modalData.main.newIndex >= 0) {
-                    console.log('adding new?')
+                    console.log('adding new..')
                     var newID = this.modalData.main.newIndex;
                     //passing data to object
                     this.tempData = {
@@ -43,7 +45,7 @@ module app.main.modal {
                         name: 'new list',
                         tickets: [{ title: '' }],
                         catList: '',
-                        desc:''
+                        desc: ''
                     }
                 }
             }, 100)
@@ -64,14 +66,10 @@ module app.main.modal {
                 this.$dismiss({
                     reason: 'cancel'
                 });
-                this.SUBMITFORMIS = 0;
             };
-
         }
-        
 
         addList() {
-           
             this.tempData.tickets.unshift({ title: '' });
         }
         removeList(index) {
@@ -83,9 +81,6 @@ module app.main.modal {
         addCatList(name, i) {
             this.tempData['catList'] = name;
         }
-
-
-
     }
 
     class MainComponent {
@@ -105,5 +100,4 @@ module app.main.modal {
         .module('app.main.modal', [])
     angular
         .module('app.main.modal').component('ticketModal', new MainComponent());
-
 }

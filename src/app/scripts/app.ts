@@ -12,12 +12,11 @@ module app {
    // 'ngMockE2E',
     'dndLists',
 
-   // 'app.data',
+    'app.mockData',
     'app.core',
     'app.layout',
     'app.main',
     'app.projectName',
     'app.emailForm'
   ]);
-
 }

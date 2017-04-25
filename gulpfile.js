@@ -25,32 +25,13 @@ var app_path = './src/app';
 var dist_path = './public/dist'
 
 
-//v4-alpha
-// https://v4-alpha.getbootstrap.com/
-//https://github.com/twbs/bootstrap/releases/
-// https://fezvrasta.github.io/bootstrap-material-design/#radio-button
-// Ctrl + K + F 
-
-
 gulp.task('clean', function (done) {
   del(['./public/dist/'], done);
 });
 
-
-
 gulp.task('styles-new', function () {
 
-
- // move fonts to dist  manually
-  gulp.src(app_path + '/scss/fonts/*.*')
-    .pipe(gulp.dest(dist_path + '/styles/fonts'));   
-
-
  // move font-awesome to dist  manually
- /*
-  gulp.src(app_path + '/scss/fonts/*.*')
-    .pipe(gulp.dest(dist_path + '/styles/fonts'));       
-*/
 var fontAwesomePath = './public/bower_components/font-awesome/';
 
 pathExists(fontAwesomePath).then((exists)=> {
@@ -60,20 +41,11 @@ pathExists(fontAwesomePath).then((exists)=> {
 });
 
   var injectAppFiles = gulp.src([app_path + '/scss/layout.scss'], { read: false });
-  var injectAppFonts = gulp.src([app_path + '/scss/fonts.scss'], { read: false });
   var injectGlobalFiles = gulp.src(app_path + '/scss/global.variables.scss', { read: false });
-
 
   function transformFilepath(filepath) {
     return '@import "' + filepath + '";';
   }
-
-  var injectAppFontOptions = {
-    transform: transformFilepath,
-    starttag: '// inject:Fonts',
-    endtag: '// endinject',
-    addRootSlash: false
-  };
 
   var injectAppOptions = {
     transform: transformFilepath,
@@ -100,23 +72,11 @@ pathExists(fontAwesomePath).then((exists)=> {
   return gulp.src(app_path + '/scss/main.scss')
     .pipe(wiredep())
     .pipe(inject(injectGlobalFiles, injectGlobalOptions))
-    .pipe(inject(injectAppFonts, injectAppFontOptions))
     .pipe(inject(injectAppFiles, injectAppOptions))
     .pipe(sass())
     .pipe(csso())
     .pipe(gulp.dest(dist_path + '/styles'));
 
-});
-
-
-gulp.task('vendor-js', function () {
-  var bowerDebOrder = require('./bower.json').dependencies;
-
-  return gulp.src(mainBowerFiles(), { base: dist_path + '/bower_components' })
-    .pipe(filter('**/*.js'))
-    .pipe(concat('vendors.js'))
-    .pipe(uglify())
-    .pipe(gulp.dest(dist_path + '/js'));
 });
 
 
@@ -155,8 +115,6 @@ gulp.task('angular-templates', function () {
     .pipe(gulp.dest(dist_path + '/js'));
 });
 
-
-
 gulp.task('ts-js-temp', ['typescript', 'angular-templates'], function (done) {
   browserSync.reload();
   done();
@@ -166,8 +124,6 @@ gulp.task('style-change', ['styles-new'], function (done) {
   browserSync.reload();
   done();
 });
-
-
 
 gulp.task('watch', function () {
   gulp.watch(app_path + "/scripts/**/*.ts", ['ts-js-temp']);
@@ -182,7 +138,7 @@ gulp.task('wiredep', ['styles-new', 'typescript', 'angular-templates'], function
   '!' + dist_path + '/js/app.js',
   '!' + dist_path + '/js/app.core.js'
   ]);
-  // dist_path + '/js/vendors.js',
+
   var injectOptions = {
     addRootSlash: false,
     ignorePath: ['src', 'public']
