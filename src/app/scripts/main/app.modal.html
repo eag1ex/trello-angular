@@ -73,8 +73,9 @@
 
     <div class="clearfix"></div>
 
-    <div class="card-block pt-0 pb-0">
-      <email-form></email-form>
+    <div class="card-block pt-0 pb-0 email-form-outer">
+      <email-form ng-init="vm.hideform=1"  hideform="vm.hideform" 
+      ng-hide="vm.hideform==1"></email-form>
     </div>
 
   </div>
@@ -111,7 +112,7 @@
       <button class="btn-sm btn btn-secondary m-1" type="button" ng-click="vm.addList();">Add List</button>
       <button class="btn-sm btn btn-secondary m-1" type="button" ng-click="vm.handleClose()">Save</button>
       <button class="btn-sm btn btn-secondary m-1" type="button" ng-click="vm.handleDismiss()">Dimiss</button>
-      <button class="btn btn-sm btn-primary m-1" type="button">Send</button>
+      <button class="btn btn-sm btn-primary m-1" ng-click="vm.hideform=0" type="button">Send</button>
     </div>
   </div>
 </div>

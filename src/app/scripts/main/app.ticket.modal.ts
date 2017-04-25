@@ -21,9 +21,7 @@ module app.main.modal {
             // initialize 
             this.modalInit();
 
-        }
-
-        
+        }      
 
         modalInit() {
 
@@ -44,7 +42,8 @@ module app.main.modal {
                         id: newID,
                         name: 'new list',
                         tickets: [{ title: '' }],
-                        catList: ''
+                        catList: '',
+                        desc:''
                     }
                 }
             }, 100)

@@ -7,6 +7,7 @@ module app {
     .config(configureStates)
     .run(appRun)
     .constant('_', window._)
+    .constant('API', {'EMAIL':"http://localhost:3100/send",  'DATA':null})
 
   appRun['$inject'] = ['$rootScope'];
   function appRun($rootScope) {

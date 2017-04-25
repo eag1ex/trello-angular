@@ -48,13 +48,20 @@ html,
 body {
     background: $bkg-color!important;
 }
-.unl{
+
+.center {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.unl {
     text-decoration: underline;
 }
 
-.neg-l-25{
-    margin-left:-25px;
+.neg-l-25 {
+    margin-left: -25px;
 }
+
 .r-input {
     @include reset-input();
 }
@@ -87,43 +94,44 @@ i.c3 {
 
 //-------------------- ng-animate
 .animate-enter {
-	-webkit-transition: 1s linear all; /* Chrome */
-	transition: 1s linear all;
-	opacity: 0;
+    -webkit-transition: 1s linear all;
+    /* Chrome */
+    transition: 1s linear all;
+    opacity: 0;
 }
+
 .animate-enter-active {
-	opacity: 1;
+    opacity: 1;
 }
 
-.ng-enter, .ng-hide {
-  /* standard transition code */
-  transition: 0.1s linear all;
-  opacity:0;
+.ng-enter,
+.ng-hide {
+    /* standard transition code */
+    transition: 0.1s linear all;
+    opacity: 0;
 }
+
 .ng-enter-stagger {
-  /* this will have a 100ms delay between each successive leave animation */
-  transition-delay: 0.1s;
-
-  /* As of 1.4.4, this must always be set: it signals ngAnimate
+    /* this will have a 100ms delay between each successive leave animation */
+    transition-delay: 0.1s;
+    /* As of 1.4.4, this must always be set: it signals ngAnimate
     to not accidentally inherit a delay property from another CSS class */
-  transition-duration: 0s;
-
-  /* if you are using animations instead of transitions you should configure as follows:
+    transition-duration: 0s;
+    /* if you are using animations instead of transitions you should configure as follows:
     animation-delay: 0.1s;
     animation-duration: 0s; */
 }
-.ng-enter.ng-enter-active, .ng-show{
-  transition: 0.1s linear all;
-  opacity:1;
+
+.ng-enter.ng-enter-active,
+.ng-show {
+    transition: 0.1s linear all;
+    opacity: 1;
 }
 
+.modal-backdrop.fade {
+    opacity: 0.5; //overite
+}
 
-
-
-
-.modal-backdrop.fade { 
-        opacity: 0.5; //overite
-    }
 .modal {
     &.fade {
         opacity: 1!important; //overite
@@ -132,7 +140,6 @@ i.c3 {
         background: transparent;
         border: none;
     }
-    
     .modal-dialog {
         top: 100px;
     }
@@ -141,21 +148,19 @@ i.c3 {
         margin: 2px;
     }
     ticket-modal {
-        
+        position: relative;
         .card {
             background: #eee!important;
             flex-direction: inherit!important;
-
-            h6,button{
-                color: #54585a!important;
+            h6,
+            button {
+                color: #54585a;
             }
-
-            .btn-action-list{
-                .btn-primary{
-                    color:#fff!important;
+            .btn-action-list {
+                .btn-primary {
+                    color: #fff!important;
                 }
             }
-
             .comment-group {
                 p.card-text {
                     background: #e6e4e4;
@@ -163,7 +168,7 @@ i.c3 {
                     @include border-radius(3px);
                     @include box-shadow(1px 1px 1px rgba(0, 0, 0, 0.1));
                 }
-                i.fa-ravelry{
+                i.fa-ravelry {
                     opacity: 0.3;
                 }
                 i.fa-comment-o {
@@ -290,18 +295,57 @@ main {
         }
     }
 }
-email-form{
-    form{
+
+.email-form-outer {
+
+}
+
+email-form {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    height: 100%;
+
+    .form-control-feedback{
+        .fa-smile-o::before{
+            position: relative;
+            top: 13px;
+        }
+    }
+
+    >.container {
+        margin-top: 30%;
+        position: relative;
+        z-index: 11;
+    }
+    .back-fill {
+        background: rgba(255, 255, 255, 0.7);
+        width: 100%;
+        height: 500px;
+        position: absolute;
+        top: 0px;
+        z-index: 1;
+    }
+    .close-email-form {
+        z-index: 11;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
+    .return-message {
+        background: #fff;
+    }
+    form {
         min-height: 100px;
-        input{
-            &::placeholder{
-                color: rgba(0,0,0,0.3);
+        input {
+            &::placeholder {
+                color: rgba(0, 0, 0, 0.3)!important;
             }
         }
     }
 }
-
-
 
 //buttons------------------------
 button.btn {
