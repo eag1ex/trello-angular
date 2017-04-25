@@ -1,6 +1,6 @@
 //avoid compailer error messages
 declare var angular: any;
-
+declare var _: any;
 module app {
   'use strict';
 

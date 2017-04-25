@@ -93,7 +93,8 @@ $/ bower install
 * Not a complete project
 * View card and edit view are the same form
 * Not tested for mobile
-* You need to setup your own SMTP to use and test ./nodemailer/  
+* You need to setup your own SMTP to use and test ./nodemailer/
+* Go to ./nodemailer/server.js > update your SMTP settings!   
 ***
 
 ###### To be completed ?

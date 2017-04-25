@@ -1,6 +1,7 @@
 module app.main.modal {
     'use strict';
     export class MainController {
+        public hideself:any;
         public handleClose: any;
         public handleDismiss: any;
         public tempData: any = [];
@@ -91,7 +92,7 @@ module app.main.modal {
         bindings = {
             $close: '&',
             $dismiss: '&',
-            modalData: '<'
+            modalData: '<',
             hideself:"="
         };
         transclude = true;

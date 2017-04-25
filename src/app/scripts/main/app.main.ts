@@ -66,7 +66,7 @@ module app.main {
         controller: ['modalData','hideself', function (modalData,hideself) {
           this.modalData = modalData;
           this.hideself=hideself;
-        }]
+        }],
         controllerAs: 'vm',
         resolve: {
           hideself:0,
