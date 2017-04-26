@@ -39,6 +39,7 @@
     "gulp-uglify": "^2.1.2",
     "gulp-util": "^3.0.8",
     "nodemailer": "^4.0.1",
+    "express": "latest",
     "path-exists": "^3.0.0",
     "typescript": "^2.2.2",
     "wiredep": "^4.0.0"
