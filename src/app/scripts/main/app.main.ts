@@ -139,5 +139,4 @@ module app.main {
     .module('app.main', ['app.main.modal'])
   angular
     .module('app.main').component('main', new MainComponent());
-
 }

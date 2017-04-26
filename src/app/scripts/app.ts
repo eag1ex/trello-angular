@@ -3,7 +3,6 @@ declare var angular: any;
 declare var _: any;
 module app {
   'use strict';
-
   angular.module('app', [
     // dependant
     'ui.router',
