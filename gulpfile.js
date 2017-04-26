@@ -9,9 +9,9 @@ var typescript = require('gulp-typescript');
 var tsProject = typescript.createProject('tsconfig.json', { removeComments: false });
 var sourcemaps = require('gulp-sourcemaps');
 var uglify = require('gulp-uglify');
-var csso = require('gulp-csso');
+var csso = require('gulp-csso');  
 var wiredep = require('wiredep').stream;
-var gutil = require('gulp-util'); http://localhost:3000/
+var gutil = require('gulp-util'); 
 var minifyHtml = require('gulp-htmlmin');
 var angularTemplatecache = require('gulp-angular-templatecache');
 var pathExists = require('path-exists');
@@ -68,7 +68,6 @@ pathExists(fontAwesomePath).then((exists)=> {
     directory: './public/bower_components',
   };
 
-  
 
   return gulp.src(app_path + '/scss/main.scss')
     .pipe(wiredep())
@@ -90,7 +89,6 @@ gulp.task('typescript', function () {
     .pipe(tsProject())
     .pipe(rename({ dirname: '' }))// remove dir structure copy
     .pipe(sourcemaps.init())
-    //.pipe(gulpif(env==='production', uglify() ))
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(dist_path + '/js'))
 })
@@ -170,7 +168,6 @@ gulp.task('all', ['clean'], function () {
     gutil.log('-------------------------');
   });
 });
-
 
 gulp.task('default', ['all', 'watch'], function () {
 
