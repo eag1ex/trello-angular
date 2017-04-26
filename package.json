@@ -1,25 +1,35 @@
 {
   "name": "angular-trello",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "prototype",
   "scripts": {
-    "start": "gulp",
-    "nodemailer": "node ./nodemailer/server.js"
+    "hot":"npm update& npm i node-sass -g& npm rebuild node-sass",
+    "postinstall": "bower install -g",  
+    "nodemailer": "node ./nodemailer/server.js",
+    "start": "gulp"
   },
   "keywords": [],
   "author": "Michael Polak",
-  "license": "",
+  "url" : "http://creativeatwork.net",
+  "license": "ISC",
+  "engine": {
+    "node": ">=6.9.4",
+    "node-sass":"^3.10.10"
+  },
+  "os" : [ "darwin", "linux","win32" ],
+  "repository": {
+    "type": "git",
+    "url": "#"
+  },
+
   "devDependencies": {
     "angular-mocks": "^1.6.3",
     "browser-sync": "^2.18.8",
     "cors": "^2.8.3",
     "del": "^1.2.0",
-    "express": "^4.15.2",
     "gulp": "^3.8.11",
     "gulp-angular-templatecache": "^2.0.0",
-    "gulp-concat": "^2.5.2",
     "gulp-csso": "^1.0.0",
-    "gulp-filter": "^2.0.2",
     "gulp-htmlmin": "^3.0.0",
     "gulp-inject": "^4.2.0",
     "gulp-rename": "^1.2.2",
@@ -28,7 +38,6 @@
     "gulp-typescript": "^3.1.6",
     "gulp-uglify": "^2.1.2",
     "gulp-util": "^3.0.8",
-    "main-bower-files": "^2.13.1",
     "nodemailer": "^4.0.1",
     "path-exists": "^3.0.0",
     "typescript": "^2.2.2",

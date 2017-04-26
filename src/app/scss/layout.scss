@@ -1,7 +1,5 @@
-
 // include animation before app loads
 @import '_preloader';
-
 //----------------------------
 // @layout.scss
 //----------------------------
@@ -53,7 +51,7 @@ body {
     background: $bkg-color!important;
 }
 
-.angular-app-include{
+.angular-app-include {
     opacity: 0;
 }
 
@@ -100,7 +98,6 @@ i.c3 {
     color: #999
 }
 
-
 //-------------------- ng-animate
 .animate-enter {
     -webkit-transition: 1s linear all;
@@ -142,26 +139,29 @@ i.c3 {
 }
 
 .fade-in {
-  -webkit-transition: 0.1s linear all;
-  transition: 0.1s linear all;
-}
-.fade-in.ng-enter {
-  opacity: 0;
-}
-.fade-in.ng-enter.ng-enter-active {
-  opacity: 1;
-}
-.fade-in.ng-leave {
-  opacity: 1;
-}
-.fade-in.ng-leave.ng-leave-active {
-  opacity: 0;
+    -webkit-transition: 0.1s linear all;
+    transition: 0.1s linear all;
 }
 
+.fade-in.ng-enter {
+    opacity: 0;
+}
+
+.fade-in.ng-enter.ng-enter-active {
+    opacity: 1;
+}
+
+.fade-in.ng-leave {
+    opacity: 1;
+}
+
+.fade-in.ng-leave.ng-leave-active {
+    opacity: 0;
+}
 
 .modal {
     &.fade {
-        opacity:1!important;
+        opacity: 1!important;
     }
     .modal-content {
         background: transparent;
@@ -249,7 +249,6 @@ nav {
             color: rgba(255, 255, 255, 0.5);
         }
     }
-    
     a {
         color: #fff;
     }
@@ -291,15 +290,15 @@ main {
             top: 0;
             right: 0;
         }
-         .list-group {
-                li {
-                    cursor: pointer;
-                    &:hover {
-                        background: rgba(0, 0, 0, 0.04)!important;
-                        transition: 0.1s linear all;
-                    }
+        .list-group {
+            li {
+                cursor: pointer;
+                &:hover {
+                    background: rgba(0, 0, 0, 0.04)!important;
+                    transition: 0.1s linear all;
                 }
             }
+        }
         .card-block {
             position: relative;
             padding: 0.5rem;
@@ -321,7 +320,6 @@ main {
                 background: rgba(0, 0, 0, .01)!important;
                 margin-bottom: 0px;
             }
-           
         }
         .list-group-item {
             background: #fff!important;
@@ -343,10 +341,16 @@ email-form {
     left: 0;
     overflow: hidden;
     height: 100%;
-    .form-control-feedback {
-        .fa-smile-o::before {
-            position: relative;
-            top: 13px;
+    .display-message-wrap {
+        position: relative;
+        >div{
+            position: absolute;
+        }
+        .form-control-feedback {
+            .fa-smile-o{
+                position: relative;
+                top: 15px;
+            }
         }
     }
     >.container {

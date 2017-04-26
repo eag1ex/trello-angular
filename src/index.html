@@ -6,20 +6,19 @@
 
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+  <link rel="shortcut icon" type="image/png" href="#" />
   <title>Angular Trello</title>
   <!-- inject:css -->
   <!-- endinject -->
 </head>
 
 <body>
-  <div ng-init="angularLoader=1" ng-include="'dist/js/layout.html'" 
-       ng-class='{"ng-show ng-animate":angularLoader==1}' class='angular-app-include'></div>
+  <div ng-init="angularLoader=1" ng-include="'dist/js/layout.html'" ng-class='{"ng-show ng-animate":angularLoader==1}' class='angular-app-include'></div>
 
-  <div  id="preloader" class="overlay-loader" ng-if="false" class='fade-out'>
-		<div class="loader-background"></div>
-		<img class="loader-icon spinning-cog " src="./dist/styles/cog09.svg" data-cog="cog09">
-	</div>
+  <div id="preloader" class="overlay-loader" ng-if="false" class='fade-out'>
+    <div class="loader-background"></div>
+    <img class="loader-icon spinning-cog " src="./dist/styles/cog09.svg" data-cog="cog09">
+  </div>
 
   <!-- bower:js -->
   <!-- endbower -->

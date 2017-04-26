@@ -1,17 +1,20 @@
 #### - Trello Angular -
-A Trello like looking App using Angular.js and Bootstrap 4/Flexbox witn Nodemailer.
+A Trello like looking App using Angular.js and Bootstrap 4/Flexbox witn Nodemailer and Lodash.
 
 
 ######Repo
 
 
 ###### Instalation
+* You need to setup your own SMTP to use and test ./nodemailer/ for sending email.
+* Go to ./nodemailer/server.js > update your SMTP settings!  
+* For Nodemailer to work you need nodejs 6^, and node-sass (installed -g)
+* Run **$/ npm run hot** to install node-sass, and rebuild it. (you might need sudo if on Mac/Linux)
 
 ```
 #!python
 
 $/ npm install
-$/ bower install
 ```
 
 ***
@@ -26,7 +29,7 @@ $/ bower install
 
 ***
 ##### Stack/Setup
-* Angular 1.6/component, BootStrap alpha.6/Flexbox, Sass, Typescript, nodejs/Express, Nodemailer
+* Angular 1.6/component, BootStrap alpha.6/Flexbox, Sass, Typescript, nodejs/Express, Nodemailer, Lodash
 * Following John Papa Angular Styleguide
 * Integraded in modular fashion
 * Using mock data as service
@@ -40,11 +43,19 @@ $/ bower install
 
 >> scripts
 
+>>> directives
+
+>>>> email.form.ts
+
+>>>> project.name.ts
+
 >>> main
 
 >>>> app.main.ts
 
 >>>> app.main.html
+
+>>>> app.ticket.modal.ts
 
 >>>> app.ticket.modal.html
 
@@ -65,6 +76,10 @@ $/ bower install
 >> **app.ts**
 
 >> scss
+
+>>> _preloader.scss
+
+>>> cog09.svg
 
 >>> global.variables.scss
 
@@ -90,18 +105,18 @@ $/ bower install
 ***
 
 ##### -- Remarks --
-* Not a complete project
 * View card and edit view are the same form
-* Not tested for mobile
 * You need to setup your own SMTP to use and test ./nodemailer/
-* Go to ./nodemailer/server.js > update your SMTP settings!   
+* Go to ./nodemailer/server.js > update your SMTP settings!
+* Tested and works on Linux and Windows
+* Bower files are installed in ./public dir, and used by "wiredep"
 ***
 
 ###### To be completed ?
 * Not a complete project
 * View card and edit view are the same form
 * Not tested for mobile
-* 
+* A little glich with bootstrap ui Modal vs Bootstrap alpha 4 - the transition not smooth 
 
 ***
 
