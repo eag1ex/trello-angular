@@ -1,4 +1,5 @@
 module app.main.modal {
+
     'use strict';
     export class MainController {
         public hideself:any;
@@ -23,6 +24,7 @@ module app.main.modal {
         }
 
        /**
+       * 
        * Our Ticket modal is the parent of emailForm component/directive
        * 
        */
@@ -30,6 +32,8 @@ module app.main.modal {
         modalInit() {
 
             this.timeout(() => {
+                // show first text description box;
+
                 console.log('this.hideself',this.hideself)
                 this.cats = this.modalData.cats;
                 this.hideself=0;
@@ -51,6 +55,9 @@ module app.main.modal {
                         desc: ''
                     }
                 }
+
+            this.addList();    
+
             }, 100)
 
             this.handleClose = () => {

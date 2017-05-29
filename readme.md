@@ -10,6 +10,7 @@ A Trello like looking App using Angular.js and Bootstrap 4/Flexbox witn Nodemail
 * Go to ./nodemailer/server.js > update your SMTP settings!  
 * For Nodemailer to work you need nodejs 6^, and node-sass (installed -g)
 * Run **$/ npm run hot** to install node-sass, and rebuild it. (you might need sudo if on Mac/Linux)
+* Unit testing **$/ npm run itest** to install first
 
 ```
 #!python
@@ -23,8 +24,9 @@ $/ npm install
 ```
 #!python
 
-  $/ npm run nodemailer   
- $/ npm start
+$/ npm run nodemailer   
+$/ npm start
+$/ npm run test
 ```
 
 ***

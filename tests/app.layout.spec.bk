@@ -1,0 +1,24 @@
+'use strict';
+describe('app.layout is available', function () {
+    var $controller, $scope,$rootScope;
+
+    beforeEach(function () {
+        module('app');
+        
+        inject(function (_$controller_, _$rootScope_, mockData) {
+            $controller= _$controller_;
+            $scope = {};
+            $rootScope = _$rootScope_.$new();
+            $controller= _$controller_('layoutController',{$scope:$scope,mockData:mockData })
+            $rootScope.$apply();
+        }); 
+    });
+
+    it('should initiate', function () {
+        expect($controller.mockData.data).toBeDefined()
+    });
+
+      
+
+});
+
