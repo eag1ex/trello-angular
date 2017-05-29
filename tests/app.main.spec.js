@@ -1,48 +1,69 @@
 'use strict';
 
 describe('Main component', function () {
-    var compController, MockData, $rootScope, $scope, $q, $elm, spy, $compile;
+    var compController, MockData, $rootScope, $scope, $q, $elm, spy, $compile, template, $timeout;
 
     beforeEach(module('app'));
-    beforeEach(module('app.mockData'));
-    beforeEach(module('ui.bootstrap'));
 
     beforeEach(function () {
 
-        inject(function (_$componentController_, $document, $timeout, _$q_, _$rootScope_, mockData, $uibModal, _$compile_) {
+        inject(function (_$componentController_, $document, _$timeout_, _$q_, _$rootScope_, mockData, $uibModal, _$compile_, $templateCache) {
             $q = _$q_;
             $compile = _$compile_;
-
+            $timeout = _$timeout_;
             $scope = {};
             $rootScope = _$rootScope_.$new();
             angular.element.prototype.dblclick = function () { };
-
-            var element = angular.element('<div></div>');
-            $elm = element;
-
-            var inject = { $scope: $scope, $element: $elm, $document: $document, $timeout: $timeout, $q: $q, $uibModal: $uibModal, mockData: mockData }
+            template = $templateCache.get('dist/js/app.main.html');
+            var element = angular.element(template);
+            element = $compile(element)($rootScope);
+            var inject = { $scope: $rootScope, $element: element, $document: $document, $timeout: $timeout, $q: $q, $uibModal: $uibModal, mockData: mockData }
             compController = _$componentController_('main', inject);
-            
             spyOn(compController.mockData, 'data')
             spyOn(compController, 'openModal')//.and.callThroughWith(true,true);
-            compController.openModal(true,true) 
-            compController.mockData.data();
+            spyOn(compController, 'addCard');
+
+
             $rootScope.$apply();
         });
-
     });
- 
-   
+
+    it('template to be full', function () {
+        expect(template).toBeDefined();
+        //http://daginge.com/technology/2013/12/14/testing-angular-templates-with-jasmine-and-karma/
+        /*
+         templateAsHtml = template.html();
+         expect(templateAsHtml).toContain($scope.header);
+         expect(templateAsHtml).toContain($scope.text);
+         expect(templateAsHtml).toNotContain(previousHeader);
+         expect(templateAsHtml).toNotContain(previousText);
+         */
+    })
+
+
+    it('addCard to have been called', function () {
+        compController.addCard(compController.lists[0], 0);
+
+        expect(compController.addCard).toHaveBeenCalledWith(compController.lists[0], 0);
+        expect(typeof (compController.lists)).toBe('object');
+        expect(compController.addCard).toHaveBeenCalled();
+        //expect(compController.openModal).toHaveBeenCalledWith(22, 22);
+    })
+
     it('openModal to have been called', function () {
+        compController.openModal(22, 22);
         expect(compController.openModal).toHaveBeenCalled();
-        expect(compController.openModal).toHaveBeenCalledWith(true,true);
-    }) 
+        expect(compController.openModal).toHaveBeenCalledWith(22, 22);
+    })
 
 
     it('checking component scope variables', function () {
+        compController.mockData.data();
+        compController.openModal(compController.lists[0], 2);
+    
         expect(compController.mockData.data).toHaveBeenCalled();
         expect(compController.user).toBeDefined();
-        expect(compController.dataForModal).toBeDefined();
+       // expect(compController.dataForModal).toBe();
         expect(typeof (compController.user)).toBe('object');
         expect(typeof (compController.lists)).toBe('object');
     })

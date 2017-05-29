@@ -38,8 +38,8 @@ module app.main {
       if (!elmData && !_inx) {
         this.dataForModal = {
           newIndex: this.lists.length,
-
         }
+        
       }
       //updating item
       else {
