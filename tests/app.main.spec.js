@@ -1,10 +1,13 @@
 'use strict';
 
 describe('Main component', function () {
-    var compController, MockData, $rootScope, $scope, $q, $elm, spy, $compile, template, $timeout;
+    var compController, MockData, $rootScope, $scope, $q, $elm, spy, $compile, template, $timeout, element;
 
     beforeEach(module('app'));
-
+    beforeEach(module("src/app/scripts/main/app.main.html"));
+    beforeEach(module('app.main'));
+    beforeEach(module('app.main.modal'));
+   
     beforeEach(function () {
 
         inject(function (_$componentController_, $document, _$timeout_, _$q_, _$rootScope_, mockData, $uibModal, _$compile_, $templateCache) {
@@ -15,18 +18,29 @@ describe('Main component', function () {
             $rootScope = _$rootScope_.$new();
             angular.element.prototype.dblclick = function () { };
             template = $templateCache.get('dist/js/app.main.html');
-            var element = angular.element(template);
-            element = $compile(element)($rootScope);
+            element = angular.element(template);
+            element= $compile(element)($rootScope);
             var inject = { $scope: $rootScope, $element: element, $document: $document, $timeout: $timeout, $q: $q, $uibModal: $uibModal, mockData: mockData }
             compController = _$componentController_('main', inject);
+           // angular.element(document.body).append(element);// important
             spyOn(compController.mockData, 'data')
             spyOn(compController, 'openModal')//.and.callThroughWith(true,true);
             spyOn(compController, 'addCard');
+            spyOn(compController, 'test');
 
+             compController.test();
 
-            $rootScope.$apply();
-        });
+            $rootScope.$apply(); 
+        }); 
     });
+
+ 
+     it('test passed', function () {
+       // expect(angular.element(element[3]).find('[ng-click]')).toBe(1);
+
+         expect(compController.test).toHaveBeenCalled();
+        // expect(compController.test1).toBe(1);
+    })
 
     it('template to be full', function () {
         expect(template).toBeDefined();

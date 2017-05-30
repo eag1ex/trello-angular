@@ -9,6 +9,7 @@
  * component controller
  * http://stackoverflow.com/questions/38094972/angular-1-5-unit-test-controller-that-requires-parent-components-controller#38878103
  * http://www.codelord.net/2017/01/09/unit-testing-angular-components-with-%24componentcontroller/
+ * https://puigcerber.com/2016/02/07/how-to-test-angular-1-5-components/
  */
 
 
@@ -72,7 +73,11 @@ module.exports = function (config) {
       "public/dist/js/project.name.js",
       'public/dist/js/templates.js',
       'tests/**/*.spec.js',
-      'tests/*.spec.js'
+      'tests/*.spec.js',
+
+      // templates
+      'src/app/scripts/*.html',
+      'src/app/scripts/**/*.html'
     ],
 
 
@@ -84,8 +89,9 @@ module.exports = function (config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
+       'src/app/scripts/*.html': 'ng-html2js',
+       'src/app/scripts/**/*.html': 'ng-html2js'
     },
-
 
     // test results reporter to use
     // possible values: 'dots', 'progress'

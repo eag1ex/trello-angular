@@ -4,6 +4,7 @@ module app.main {
     public dataForModal: any;
     public lists = [];
     public category: any;
+    public test1:any;
     public user: any;
     static $inject: Array<string> = ['$scope', '$element', '$document', '$uibModal', '$timeout', '$q', 'mockData'];
     /* @ngInject */
@@ -16,6 +17,7 @@ module app.main {
       public q: any,
       private mockData
     ) {
+      
 
       element.dblclick((e) => {
         if (e.target.nodeName == 'INPUT') return false;
@@ -29,6 +31,11 @@ module app.main {
       }, (error) => {
         console.log('data not available', error)
       })
+    }
+
+
+    test(text){
+      this.test1=text;
     }
 
 

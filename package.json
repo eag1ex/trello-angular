@@ -8,7 +8,7 @@
     "nodemailer": "node ./nodemailer/server.js",
     "start": "gulp",
     "test": "karma start",
-    "itest": "npm i --save-dev jasmine jasmine-core karma karma-chrome-launcher karma-jasmine karma-mocha-reporter karma-phantomjs-launcher phantomjs-prebuilt"
+    "itest": "npm i --save-dev jasmine jasmine-core karma karma-chrome-launcher karma-jasmine karma-mocha-reporter karma-phantomjs-launcher phantomjs-prebuilt karma-ng-html2js-preprocessor"
   },
   "keywords": ["trello","angular","nodemailer","typescript","nodemailer","karma","jasmine","unit testing"],
   "author": "Michael",
@@ -58,6 +58,7 @@
     "path-exists": "^3.0.0",
     "phantomjs-prebuilt": "^2.1.14",
     "typescript": "^2.2.2",
-    "wiredep": "^4.0.0"
+    "wiredep": "^4.0.0",
+    "karma-ng-html2js-preprocessor": "*"
   }
 }
