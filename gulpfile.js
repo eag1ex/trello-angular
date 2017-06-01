@@ -9,12 +9,13 @@ var typescript = require('gulp-typescript');
 var tsProject = typescript.createProject('tsconfig.json', { removeComments: false });
 var sourcemaps = require('gulp-sourcemaps');
 var uglify = require('gulp-uglify');
-var csso = require('gulp-csso');  
+var csso = require('gulp-csso');
 var wiredep = require('wiredep').stream;
-var gutil = require('gulp-util'); 
+var gutil = require('gulp-util');
 var minifyHtml = require('gulp-htmlmin');
 var angularTemplatecache = require('gulp-angular-templatecache');
 var pathExists = require('path-exists');
+var strip = require('gulp-strip-comments');
 
 var port = process.env.PORT || 3000;
 
@@ -29,17 +30,17 @@ gulp.task('clean', function (done) {
 gulp.task('styles-new', function () {
 
   // move svg image for preloader only
-   gulp.src(app_path + '/scss/*.svg')
+  gulp.src(app_path + '/scss/*.svg')
     .pipe(gulp.dest(dist_path + '/styles'));
 
- // move font-awesome to dist  manually
-var fontAwesomePath = './public/bower_components/font-awesome/';
+  // move font-awesome to dist  manually
+  var fontAwesomePath = './public/bower_components/font-awesome/';
 
-pathExists(fontAwesomePath).then((exists)=> {
+  pathExists(fontAwesomePath).then((exists) => {
     gulp.src(fontAwesomePath + '/fonts/*.*')
-    .pipe(gulp.dest(dist_path + '/styles/fonts'));     
+      .pipe(gulp.dest(dist_path + '/styles/fonts'));
     gutil.log('fontAwesomePath exists', gutil.colors.magenta(fontAwesomePath));
-});
+  });
 
   var injectAppFiles = gulp.src([app_path + '/scss/layout.scss'], { read: false });
   var injectGlobalFiles = gulp.src(app_path + '/scss/global.variables.scss', { read: false });
@@ -105,6 +106,10 @@ gulp.task('angular-templates', function () {
     }
   }
   return gulp.src(app_path + '/scripts/**/*.html')
+    /// this is neccesery due to bug when testing templates with jasmine/karma
+    // <!-- comments --> couse no template being rendered.
+    .pipe(strip()) // strip comments
+
     .pipe(rename({ dirname: '' }))
     .pipe(minifyHtml({ collapseWhitespace: true }))
     .pipe(angularTemplatecache(

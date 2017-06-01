@@ -10,7 +10,16 @@
     "test": "karma start",
     "itest": "npm i --save-dev jasmine jasmine-core karma karma-chrome-launcher karma-jasmine karma-mocha-reporter karma-phantomjs-launcher phantomjs-prebuilt karma-ng-html2js-preprocessor"
   },
-  "keywords": ["trello","angular","nodemailer","typescript","nodemailer","karma","jasmine","unit testing"],
+  "keywords": [
+    "trello",
+    "angular",
+    "nodemailer",
+    "typescript",
+    "nodemailer",
+    "karma",
+    "jasmine",
+    "unit testing"
+  ],
   "author": "Michael",
   "url": "http://creativeatwork.net",
   "license": [
@@ -44,6 +53,7 @@
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.0.1",
     "gulp-sourcemaps": "^2.4.1",
+    "gulp-strip-comments": "^2.4.5",
     "gulp-typescript": "^3.1.6",
     "gulp-uglify": "^2.1.2",
     "gulp-util": "^3.0.8",
@@ -53,12 +63,12 @@
     "karma-chrome-launcher": "^2.1.1",
     "karma-jasmine": "^1.1.0",
     "karma-mocha-reporter": "^2.2.3",
+    "karma-ng-html2js-preprocessor": "*",
     "karma-phantomjs-launcher": "^1.0.4",
     "nodemailer": "^4.0.1",
     "path-exists": "^3.0.0",
     "phantomjs-prebuilt": "^2.1.14",
     "typescript": "^2.2.2",
-    "wiredep": "^4.0.0",
-    "karma-ng-html2js-preprocessor": "*"
+    "wiredep": "^4.0.0"
   }
 }
