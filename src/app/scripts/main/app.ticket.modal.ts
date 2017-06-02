@@ -99,7 +99,7 @@ module app.main.modal {
         bindings = {
             $close: '&',
             $dismiss: '&',
-            modalData: '<',
+            modalData: '<?',
             hideself:"="
         };
         transclude = true;

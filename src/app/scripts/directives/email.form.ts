@@ -114,7 +114,7 @@ module app.emailForm {
     class MainComponent {
         constructor() { }
         require = {
-            modal: '^^ticketModal'
+            modal: '^^?ticketModal'
         }
          bindings = {
             hideform: '=',
