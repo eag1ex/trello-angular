@@ -13,30 +13,6 @@
  */
 
 
-/**
-
-
-  <!-- inject:app:js -->
-  <script src="dist/js/app.js"></script>
-  <!-- endinject -->
-
-  <!-- inject:appcore:js -->
-  <script src="dist/js/app.core.js"></script>
-  <!-- endinject -->
-
-  <!-- inject:js -->
-  <script src="dist/js/app.layout.js"></script>
-  <script src="dist/js/app.main.js"></script>
-  <script src="dist/js/app.ticket.modal.js"></script>
-  <script src="dist/js/email.form.js"></script>
-  <script src="dist/js/mock.data.js"></script>
-  <script src="dist/js/project.name.js"></script>
-  <script src="dist/js/templates.js"></script>
-
-
- */
-
-
 module.exports = function (config) {
   config.set({
 
@@ -100,25 +76,6 @@ module.exports = function (config) {
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
     reporters: ['mocha'],
-
-    /*
-    // the default configuration 
-    //    "karma-html-reporter": "^0.2.7",
-    htmlReporter: {
-      outputDir: './test', // where to put the reports  
-      templatePath: null, // set if you moved jasmine_template.html 
-      focusOnFailures: true, // reports show failures on start 
-      namedFiles: false, // name files instead of creating sub-directories 
-      pageTitle: null, // page title for reports; browser info by default 
-      urlFriendlyName: false, // simply replaces spaces with _ for files/dirs 
-      reportName: 'report-summary-filename', // report summary filename; browser info by default 
-      
-      
-      // experimental 
-      preserveDescribeNesting: false, // folded suites stay folded  
-      foldAll: false, // reports start folded (only with preserveDescribeNesting) 
-    },
-    */
 
 
     // web server port
