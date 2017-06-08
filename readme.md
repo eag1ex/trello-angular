@@ -1,5 +1,5 @@
 #### - Trello Angular -
-A Trello like looking App using Angular.js and Bootstrap 4/Flexbox witn Nodemailer and Lodash.
+A Trello like looking App using Angular.js and Bootstrap 4/Flexbox witn Nodemailer Lodash. and $httpbacked Mock service
 
 
 ######Repo
@@ -34,8 +34,9 @@ $/ npm run test
 * Angular 1.6/component, BootStrap alpha.6/Flexbox, Sass, Typescript, nodejs/Express, Nodemailer, Lodash
 * Following John Papa Angular Styleguide
 * Integraded in modular fashion
-* Using mock data as service
+* Using $httpbackend mock data as service
 * Coded in OOP
+* added unit testing using jasmine/karma
 ***
 
 
@@ -67,6 +68,12 @@ $/ npm run test
 
 >>>> mock.data.ts
 
+>>> fake.data.server
+
+>>>> dataservice.ts
+
+>>>> httpbackedMockService.ts
+
 >>> layout
 
 >>>> app.layout.ts
@@ -89,6 +96,10 @@ $/ npm run test
 
 >>> main.scss
 
+>> tests
+
+>>> ...
+
 > index.html
 
 ```
@@ -96,8 +107,8 @@ $/ npm run test
 
      /**
        *  The hierarchy of this app is:
-       *  Layout  <<< mockData
-       *     > main  <<< mockData
+       *  Layout  <<< $httbackend mock service
+       *     > main  <<< $httbackend mock service
        *        > modal <<< data from parent
        *          > send form  <<< data from parent
        *             >> form is send if nodemailer is running.

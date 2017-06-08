@@ -90,16 +90,13 @@ describe('ticket component', function () {
         $timeout.flush(100);
 
         expect(compController.tempData.id).toBeDefined()
-        //btn-sm btn btn-secondary m-1
-        // trigger openModal 
+
         //$('#findme button').trigger('click'); 
         //<button class="btn-sm btn btn-secondary m-1" type="button" ng-click="vm.handleClose()">Save</button>
-       // expect($('button').find('#handleClose').html()).toBe(1);
+        // expect($('button').find('#handleClose').html()).toBe(1);
         expect(compController.handleClose).toHaveBeenCalled();
         expect(compController.$close).toHaveBeenCalled()
-
         // expect(compController.tempData).toBe(1)
-
     })
 
 

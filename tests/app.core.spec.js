@@ -91,7 +91,5 @@ describe('app core initiating', function () {
         // expect($state.href(state, { id: 1 })).toEqual('#/state/1');
     });
 
-
-
 });
 

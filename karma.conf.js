@@ -63,6 +63,7 @@ module.exports = function (config) {
       "public/bower_components/angular-drag-and-drop-lists/angular-drag-and-drop-lists.js",
 
 
+
       'public/dist/js/app.js',
       'public/dist/js/app.core.js',
       'public/dist/js/app.layout.js',
@@ -70,6 +71,8 @@ module.exports = function (config) {
       "public/dist/js/app.ticket.modal.js",
       "public/dist/js/email.form.js",
       'public/dist/js/mock.data.js',
+      'public/dist/js/dataservice.js',
+      'public/dist/js/httpbackedMockService.js',
       "public/dist/js/project.name.js",
       'public/dist/js/templates.js',
       'tests/**/*.spec.js',

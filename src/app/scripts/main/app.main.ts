@@ -18,7 +18,6 @@ module app.main {
       private DataService
     ) {
       
-
       element.dblclick((e) => {
         if (e.target.nodeName == 'INPUT') return false;
         this.openModal(false, null);
