@@ -20,7 +20,7 @@
       "ignore": true
     },
     "jquery": {
-      "ignore": true
+      "ignore": false
     }
   },
   "dependencies": {

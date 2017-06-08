@@ -8,10 +8,12 @@ module app {
     'ui.router',
     'ui.bootstrap',
     'ngAnimate',
-   // 'ngMockE2E',
+    'ngMockE2E',
     'dndLists',
 
     'app.mockData',
+    'app.data.dataservice',
+    'app.data.httpMock',
     'app.core',
     'app.layout',
     'app.main',

@@ -9,8 +9,11 @@ module app {
     .constant('_', window._)
     .constant('API', {'EMAIL':"http://localhost:3100/send",  'DATA':null})
 
-  appRun['$inject'] = ['$rootScope','$timeout'];
-  function appRun($rootScope,$timeout) {
+  appRun['$inject'] = ['$rootScope','$timeout','httpbackedMockService'];
+  function appRun($rootScope,$timeout,httpbackedMockService) {
+       //////// run fake server
+    httpbackedMockService.run();
+
       //lodash globaly
         $rootScope._ = window._;
         $rootScope.angularLoader = 0;

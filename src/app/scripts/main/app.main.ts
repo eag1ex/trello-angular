@@ -6,7 +6,7 @@ module app.main {
     public category: any;
     public test1:any;
     public user: any;
-    static $inject: Array<string> = ['$scope', '$element', '$document', '$uibModal', '$timeout', '$q', 'mockData'];
+    static $inject: Array<string> = ['$scope', '$element', '$document', '$uibModal', '$timeout', '$q', 'dataservice'];
     /* @ngInject */
     constructor(
       public scope: any,
@@ -15,7 +15,7 @@ module app.main {
       public modal: any,
       public timeout: any,
       public q: any,
-      private mockData
+      private DataService
     ) {
       
 
@@ -25,7 +25,7 @@ module app.main {
       })
 
       //our data!
-      mockData.data().then((data) => {
+      DataService.get().then((data) => {
         this.user = data.user;
         this.lists = data.lists;
       }, (error) => {

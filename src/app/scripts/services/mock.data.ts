@@ -1,4 +1,4 @@
-module app.mockData {
+module app.data {
     'use strict';
 
     interface IPeople {
@@ -19,14 +19,15 @@ module app.mockData {
 
         data() {
             var deferred = this.q.defer();
-            var data = {
+            // var data {}
+            return { // using httpbackendmockservice
                 category: this.categories(),
                 user: this.user(),
                 lists: this.lists()
             }
-            if (data) deferred.resolve(data);
-            else deferred.reject('error data not found');
-            return deferred.promise;
+           // if (data) deferred.resolve(data);
+           // else deferred.reject('error data not found');
+            //return deferred.promise;
         }
 
         categories() {

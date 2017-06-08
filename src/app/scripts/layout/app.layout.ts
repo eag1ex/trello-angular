@@ -2,9 +2,9 @@ module app.layout {
   'use strict';
 
   export class LayoutController {
-    static $inject: Array<string> = ['$scope','mockData'];
+    static $inject: Array<string> = ['$scope','dataservice'];
     public category:any;
-    constructor(public scope:any, private mockData:any) {
+    constructor(public scope:any, private DataService:any) {
 
       /**
        *  The hierarchy of this app is:
@@ -17,7 +17,7 @@ module app.layout {
 
       
 
-     mockData.data().then((data)=>{
+     DataService.get().then((data)=>{
       this.category = data.category;
      },(error)=>{
        console.log('category data not available', error)
