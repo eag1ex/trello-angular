@@ -1,8 +1,8 @@
 #### - Trello Angular -
 A Trello like looking App using Angular.js and Bootstrap 4/Flexbox witn Nodemailer Lodash. and $httpbacked Mock service
 
-#### - Company / Agency -  [Creative At Work](http://creativeatwork.net) -
-Creative Agency specializing in Creative and website/application development, SPA/MVC, Mean Stack, UX/UI, Agile, things like that, hope you like this project.
+#### - [ Company / Digital Agency - Creative At Work](http://creativeatwork.net) -
+[ Creative Agency specializing in Creative and website/application development, SPA/MVC, Mean Stack, UX/UI, Agile, things like that, hope you like this project. ](http://creativeatwork.net/portfolio)
 
 ######Repo
 
